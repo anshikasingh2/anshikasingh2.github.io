@@ -853,32 +853,55 @@
         const valRev = document.getElementById('val-revenue');
 
         // The Data: Before (Bad) vs After (Good)
-        const cases = [
-            {
-                name: "AMAZON",
-                desc: "High latency was killing sales.",
-                before: { lat: "1.2s", cost: "$$$", rev: "Stagnant" },
-                after:  { lat: "100ms", cost: "Stable", rev: "+1% ($B)" }
-            },
-            {
-                name: "SEGMENT",
-                desc: "Microservices overhead burned cash.",
-                before: { lat: "Spikes", cost: "$High", rev: "Flat" },
-                after:  { lat: "Stable", cost: "-30%", rev: "Healthy" }
-            },
-            {
-                name: "DISCORD",
-                desc: "GC Pauses caused lag for 11M users.",
-                before: { lat: "Freeze", cost: "High CPU", rev: "Churn" },
-                after:  { lat: "Zero", cost: "Low CPU", rev: "Growth" }
-            },
-            {
-                name: "WALMART",
-                desc: "Slow load times hurt conversion.",
-                before: { lat: "4.0s", cost: "Wasted", rev: "Low Conv" },
-                after:  { lat: "2.0s", cost: "Optimized", rev: "+2% Sales" }
-            }
-        ];
+        // const cases = [
+        //     {
+        //         name: "AMAZON",
+        //         desc: "High latency was killing sales.",
+        //         before: { lat: "1.2s", cost: "$$$", rev: "Stagnant" },
+        //         after:  { lat: "100ms", cost: "Stable", rev: "+1% ($B)" }
+        //     },
+        //     {
+        //         name: "SEGMENT",
+        //         desc: "Microservices overhead burned cash.",
+        //         before: { lat: "Spikes", cost: "$High", rev: "Flat" },
+        //         after:  { lat: "Stable", cost: "-30%", rev: "Healthy" }
+        //     },
+        //     {
+        //         name: "DISCORD",
+        //         desc: "GC Pauses caused lag for 11M users.",
+        //         before: { lat: "Freeze", cost: "High CPU", rev: "Churn" },
+        //         after:  { lat: "Zero", cost: "Low CPU", rev: "Growth" }
+        //     },
+        //     {
+        //         name: "WALMART",
+        //         desc: "Slow load times hurt conversion.",
+        //         before: { lat: "4.0s", cost: "Wasted", rev: "Low Conv" },
+        //         after:  { lat: "2.0s", cost: "Optimized", rev: "+2% Sales" }
+        //     }
+        // ];
+
+        // Real System Optimization Cases
+const cases = [
+    {
+        name: "PostgreSQL Optimization",
+        desc: "High CPU utilization during concurrent payroll processing.",
+        before: { lat: "2s", cost: "High CPU (85%)", rev: "Throughput limited" },
+        after:  { lat: "200ms", cost: "CPU 40%", rev: "Stable under peak load" }
+    },
+    {
+        name: "Linux + NFS Tuning",
+        desc: "I/O wait spikes during load testing with LoadRunner.",
+        before: { lat: "High IO wait", cost: "Throughput drops", rev: "System unstable" },
+        after:  { lat: "Stable IO", cost: "2.3x throughput", rev: "Peak-ready" }
+    },
+    {
+        name: "Connection Pool Optimization",
+        desc: "Backend API latency under concurrent requests.",
+        before: { lat: "Latency spikes", cost: "Thread blocking", rev: "Slow API" },
+        after:  { lat: "-40% latency", cost: "Efficient resource usage", rev: "Consistent response time" }
+    }
+];
+
 
         let idx = 0;
 
