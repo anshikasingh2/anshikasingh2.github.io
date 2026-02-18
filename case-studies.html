@@ -1,0 +1,613 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+<meta charset="UTF-8">
+<meta name="viewport" content="width=device-width, initial-scale=1.0">
+<title>Case Studies – Anshika Pundeel</title>
+<link rel="preconnect" href="https://fonts.googleapis.com">
+<link href="https://fonts.googleapis.com/css2?family=IBM+Plex+Mono:wght@400;500;600;700&family=Figtree:wght@400;500;600;700;800;900&display=swap" rel="stylesheet">
+<style>
+:root{
+  --ink:#0a0a0f;--body:#3a3a52;--muted:#7a7a96;--rule:#e4e4ef;
+  --bg:#ffffff;--bg2:#f7f7fc;--bg3:#f0f2f8;
+  --blue:#0066ff;--blue-dim:#e8f0ff;
+  --green:#00875a;--green-dim:#e3f5ee;--green-bright:#00c47a;
+  --amber:#b45309;--amber-dim:#fef3c7;
+  --neutral:#64647a;--neutral-dim:#f0f0f8;
+}
+*,*::before,*::after{box-sizing:border-box;margin:0;padding:0}
+html{scroll-behavior:smooth}
+body{font-family:'Figtree',sans-serif;background:var(--bg);color:var(--ink);-webkit-font-smoothing:antialiased;overflow-x:hidden}
+a{color:inherit;text-decoration:none}
+.wrap{max-width:940px;margin:0 auto;padding:0 28px}
+
+/* NAV */
+.nav{position:sticky;top:0;z-index:100;background:rgba(255,255,255,.94);backdrop-filter:blur(12px);border-bottom:1px solid var(--rule)}
+.nav-inner{display:flex;align-items:center;justify-content:space-between;padding:16px 28px;max-width:940px;margin:0 auto}
+.nav-brand{font-family:'IBM Plex Mono',monospace;font-size:13px;font-weight:600;letter-spacing:.04em}
+.nav-brand b{color:var(--blue)}
+.nav-links{display:flex;gap:6px;list-style:none}
+.nav-links a{font-size:13px;font-weight:500;color:var(--body);padding:6px 12px;border-radius:6px;transition:all .2s}
+.nav-links a:hover{color:var(--ink);background:var(--bg2)}
+.nav-pill{background:var(--blue)!important;color:#fff!important;border-radius:6px;font-weight:600!important}
+@media(max-width:600px){.nav-links{display:none}}
+
+/* HEADER */
+.ph{padding:64px 0 48px;border-bottom:1px solid var(--rule);background:radial-gradient(ellipse 60% 50% at 70% 0%,rgba(0,102,255,.05) 0%,transparent 60%)}
+.ey{display:inline-flex;align-items:center;gap:8px;font-family:'IBM Plex Mono',monospace;font-size:11px;font-weight:500;letter-spacing:.14em;text-transform:uppercase;color:var(--blue);margin-bottom:14px}
+.ey::before{content:'';display:block;width:20px;height:2px;background:var(--blue)}
+.ph h1{font-size:clamp(26px,4vw,42px);font-weight:900;letter-spacing:-.03em;line-height:1.1;margin-bottom:10px}
+.ph p{font-size:14px;color:var(--muted);font-family:'IBM Plex Mono',monospace}
+
+/* CASES */
+.cases{padding:60px 0 80px;display:flex;flex-direction:column;gap:72px}
+
+/* CASE SHELL */
+.cs{opacity:0;transform:translateY(24px);transition:opacity .7s ease,transform .7s ease}
+.cs.visible{opacity:1;transform:translateY(0)}
+
+.cs-eyebrow{display:inline-flex;align-items:center;gap:8px;font-family:'IBM Plex Mono',monospace;font-size:11px;font-weight:600;letter-spacing:.1em;text-transform:uppercase;margin-bottom:10px}
+.cs-eyebrow .pip{width:7px;height:7px;border-radius:50%}
+.pip-b{background:var(--blue)}.pip-g{background:var(--green-bright)}.pip-a{background:var(--amber)}
+.eyebrow-b{color:var(--blue)}.eyebrow-g{color:var(--green)}.eyebrow-a{color:var(--amber)}
+
+.cs h2{font-size:clamp(17px,2.5vw,24px);font-weight:800;letter-spacing:-.025em;color:var(--ink);line-height:1.25;margin-bottom:28px}
+
+/* METRIC CARDS */
+.metrics-row{display:grid;grid-template-columns:repeat(3,1fr);gap:14px;margin-bottom:28px}
+@media(max-width:520px){.metrics-row{grid-template-columns:1fr 1fr}}
+.mc{border:1.5px solid var(--rule);border-radius:10px;padding:20px;background:var(--bg);position:relative;overflow:hidden;text-align:center}
+.mc::after{content:'';position:absolute;top:0;left:0;right:0;height:3px}
+.mc-b::after{background:var(--blue)}.mc-g::after{background:var(--green-bright)}.mc-a::after{background:var(--amber)}
+.mc-num{font-family:'IBM Plex Mono',monospace;font-size:34px;font-weight:700;letter-spacing:-.02em;line-height:1}
+.mc-b .mc-num{color:var(--blue)}.mc-g .mc-num{color:var(--green)}.mc-a .mc-num{color:var(--amber)}
+.mc-lbl{font-family:'IBM Plex Mono',monospace;font-size:10px;letter-spacing:.08em;text-transform:uppercase;color:var(--muted);margin-top:5px}
+
+/* DIAGRAM CARD */
+.diag{border:1.5px solid var(--rule);border-radius:12px;overflow:hidden;background:var(--bg);margin-bottom:20px}
+
+/* Tabs */
+.tabs{display:flex;background:var(--bg2);border-bottom:1px solid var(--rule)}
+.tab{flex:1;padding:11px 8px;font-family:'IBM Plex Mono',monospace;font-size:11px;font-weight:600;letter-spacing:.08em;text-transform:uppercase;text-align:center;cursor:pointer;color:var(--muted);border-bottom:2px solid transparent;transition:all .2s;user-select:none}
+.tab:hover{color:var(--ink)}
+.tab.on-b{color:var(--blue);border-color:var(--blue);background:var(--blue-dim)}
+.tab.on-g{color:var(--green);border-color:var(--green-bright);background:var(--green-dim)}
+.tab.on-a{color:var(--amber);border-color:var(--amber);background:var(--amber-dim)}
+
+/* Panels */
+.panel{display:none;padding:28px 32px;animation:fin .35s ease}
+.panel.on{display:block}
+@keyframes fin{from{opacity:0;transform:translateY(5px)}to{opacity:1;transform:translateY(0)}}
+@media(max-width:560px){.panel{padding:20px}}
+
+/* Flow diagram */
+.flow{display:flex;align-items:center;gap:0;flex-wrap:wrap}
+.fn{border:1.5px solid var(--rule);border-radius:8px;padding:12px 16px;text-align:center;flex-shrink:0;min-width:110px;background:var(--bg)}
+.fn-title{font-size:12px;font-weight:700;color:var(--ink);margin-bottom:3px}
+.fn-sub{font-family:'IBM Plex Mono',monospace;font-size:10px;color:var(--muted)}
+/* neutral before state */
+.fn.before{border-color:var(--rule);background:var(--neutral-dim)}
+.fn.before .fn-title{color:var(--neutral)}
+/* positive after state */
+.fn.after-b{border-color:rgba(0,102,255,.3);background:var(--blue-dim)}
+.fn.after-b .fn-title{color:var(--blue)}
+.fn.after-g{border-color:rgba(0,196,122,.3);background:var(--green-dim)}
+.fn.after-g .fn-title{color:var(--green)}
+/* warning - just amber, not red */
+.fn.warn{border-color:rgba(180,83,9,.3);background:var(--amber-dim)}
+.fn.warn .fn-title{color:var(--amber)}
+.arr{font-size:16px;color:var(--rule);padding:0 10px;flex-shrink:0}
+@media(max-width:560px){.flow{flex-direction:column;align-items:flex-start;gap:4px}.arr{transform:rotate(90deg)}}
+
+/* Info callout - neutral */
+.callout{margin-top:18px;padding:14px 16px;border-radius:8px;border:1px solid var(--rule);background:var(--bg2)}
+.callout.pos{border-color:rgba(0,135,90,.2);background:var(--green-dim)}
+.callout.pos .cl-head{color:var(--green)}
+.callout.warn{border-color:rgba(180,83,9,.2);background:var(--amber-dim)}
+.callout.warn .cl-head{color:var(--amber)}
+.cl-head{font-family:'IBM Plex Mono',monospace;font-size:10px;font-weight:700;letter-spacing:.1em;text-transform:uppercase;margin-bottom:7px;color:var(--muted)}
+.cl-items{display:flex;flex-direction:column;gap:4px}
+.cl-item{font-size:12px;color:var(--body);display:flex;gap:8px;align-items:baseline}
+.cl-item::before{content:'→';font-family:'IBM Plex Mono',monospace;font-size:10px;color:var(--muted);flex-shrink:0}
+
+/* Before/After bars */
+.ba-list{display:flex;flex-direction:column;gap:16px}
+.ba-item{}
+.ba-top{display:flex;justify-content:space-between;align-items:center;margin-bottom:6px}
+.ba-name{font-size:13px;font-weight:600;color:var(--ink)}
+.ba-tags{display:flex;gap:10px}
+.ba-tag{font-family:'IBM Plex Mono',monospace;font-size:10px;font-weight:600}
+.ba-tag.before{color:var(--neutral)}
+.ba-tag.after-b{color:var(--blue)}.ba-tag.after-g{color:var(--green)}.ba-tag.after-a{color:var(--amber)}
+.track{height:7px;background:var(--bg3);border-radius:4px;overflow:hidden;position:relative}
+.fill-before{position:absolute;left:0;top:0;height:100%;background:var(--bg3);border-radius:4px;width:100%}
+.fill-after{position:absolute;left:0;top:0;height:100%;border-radius:4px;width:0;transition:width 1.3s cubic-bezier(.22,1,.36,1)}
+.fill-b{background:var(--blue)}.fill-g{background:var(--green-bright)}.fill-a{background:var(--amber)}
+
+/* SVG chart */
+.chart{height:90px;width:100%;display:block;margin-bottom:16px}
+
+/* NUMA grid */
+.numa{display:grid;grid-template-columns:1fr 1fr;gap:14px;margin-bottom:14px}
+@media(max-width:480px){.numa{grid-template-columns:1fr}}
+.nbox{border:1.5px solid var(--rule);border-radius:8px;overflow:hidden}
+.nbox-head{padding:8px 14px;font-family:'IBM Plex Mono',monospace;font-size:10px;font-weight:700;letter-spacing:.08em;text-transform:uppercase;background:var(--bg2);border-bottom:1px solid var(--rule);color:var(--muted)}
+.nbox-head.bad-h{background:var(--neutral-dim);color:var(--neutral)}
+.nbox-head.good-h{background:var(--green-dim);color:var(--green)}
+.nbox-body{padding:12px 14px;display:flex;flex-direction:column;gap:8px}
+.vcpu-row{display:flex;align-items:center;gap:8px}
+.vcpu{width:32px;height:26px;border-radius:4px;display:flex;align-items:center;justify-content:center;font-family:'IBM Plex Mono',monospace;font-size:9px;font-weight:700;color:#fff;flex-shrink:0}
+.vcpu.stale{background:var(--neutral);animation:pulse-n 2s ease-in-out infinite}
+.vcpu.fixed{background:var(--blue)}
+@keyframes pulse-n{0%,100%{opacity:1}50%{opacity:.5}}
+.vcpu-info{font-size:11px}
+.vcpu-info .v-label{font-weight:600;color:var(--ink)}
+.vcpu-info .v-sub{font-family:'IBM Plex Mono',monospace;font-size:9px;color:var(--muted)}
+.vcpu-info .v-sub.warn{color:var(--amber)}
+.vcpu-info .v-sub.ok{color:var(--green)}
+
+/* Stack chips */
+.stack-wrap{display:flex;flex-wrap:wrap;gap:6px;padding:16px 28px;border-top:1px solid var(--rule);background:var(--bg2)}
+.chip{font-family:'IBM Plex Mono',monospace;font-size:10px;padding:3px 9px;border-radius:3px;background:var(--bg);border:1px solid var(--rule);color:var(--body)}
+
+/* NOTE & FOOTER */
+.note{border-top:1px solid var(--rule);padding:20px 0;background:var(--bg2)}
+.note p{font-family:'IBM Plex Mono',monospace;font-size:11px;color:var(--muted)}
+.note strong{color:var(--amber)}
+.footer{border-top:1px solid var(--rule);padding:24px 0;background:var(--bg2)}
+.footer-inner{display:flex;align-items:center;justify-content:space-between;flex-wrap:wrap;gap:12px}
+.footer-copy{font-size:12px;color:var(--muted)}
+.footer-links{display:flex;gap:18px}
+.footer-links a{font-size:12px;color:var(--muted);transition:color .2s}
+.footer-links a:hover{color:var(--blue)}
+</style>
+</head>
+<body>
+
+<header class="nav">
+  <div class="nav-inner">
+    <div class="nav-brand">AP<b>.</b>PERFENG</div>
+    <ul class="nav-links">
+      <li><a href="index.html#problems">Problems</a></li>
+      <li><a href="index.html#process">Process</a></li>
+      <li><a href="index.html#about">About</a></li>
+      <li><a href="index.html#contact" class="nav-pill">Work Together</a></li>
+    </ul>
+  </div>
+</header>
+
+<div class="ph">
+  <div class="wrap">
+    <div class="ey">Case Studies</div>
+    <h1>Real systems.<br>Verified outcomes.</h1>
+    <p>3 production engagements · IBM &amp; OpenText · All metrics against pre-engagement baselines</p>
+  </div>
+</div>
+
+<div class="cases">
+<div class="wrap">
+
+  <!-- ══ CS 1 ══ -->
+  <div class="cs" id="cs1">
+    <div class="cs-eyebrow eyebrow-b"><span class="pip pip-b"></span>Application Performance · OpenText 2022–2024</div>
+    <h2>Transaction Response Time: 1,840ms → 220ms on Identity Platform</h2>
+
+    <div class="metrics-row">
+      <div class="mc mc-b"><div class="mc-num" data-count="80" data-suf="%↓">0</div><div class="mc-lbl">Response Time</div></div>
+      <div class="mc mc-g"><div class="mc-num" data-count="50" data-suf="%↑">0</div><div class="mc-lbl">Throughput</div></div>
+      <div class="mc mc-a"><div class="mc-num" data-count="99.9" data-suf="%" data-dec="1">0</div><div class="mc-lbl">Uptime Certified</div></div>
+    </div>
+
+    <div class="diag">
+      <div class="tabs">
+        <div class="tab on-b" data-cs="cs1" data-p="p1a">Before</div>
+        <div class="tab" data-cs="cs1" data-p="p1b">Root Cause</div>
+        <div class="tab" data-cs="cs1" data-p="p1c">After Fix</div>
+      </div>
+
+      <div class="panel on" id="p1a">
+        <svg class="chart" viewBox="0 0 700 90" preserveAspectRatio="none">
+          <defs>
+            <linearGradient id="ng1" x1="0" y1="0" x2="0" y2="1">
+              <stop offset="0%" stop-color="#64647a" stop-opacity="0.15"/>
+              <stop offset="100%" stop-color="#64647a" stop-opacity="0"/>
+            </linearGradient>
+          </defs>
+          <path d="M0,72 L50,68 L80,22 L110,62 L140,18 L170,58 L200,12 L230,52 L260,8 L290,48 L320,14 L350,50 L380,6 L410,55 L440,16 L470,54 L500,9 L530,58 L570,22 L700,68"
+            fill="none" stroke="#64647a" stroke-width="2" stroke-linejoin="round"/>
+          <path d="M0,72 L50,68 L80,22 L110,62 L140,18 L170,58 L200,12 L230,52 L260,8 L290,48 L320,14 L350,50 L380,6 L410,55 L440,16 L470,54 L500,9 L530,58 L570,22 L700,68 L700,90 L0,90Z"
+            fill="url(#ng1)"/>
+          <line x1="0" y1="76" x2="700" y2="76" stroke="#e4e4ef" stroke-width="1" stroke-dasharray="4"/>
+          <text x="8" y="73" font-family="IBM Plex Mono" font-size="9" fill="#7a7a96">SLA limit</text>
+          <text x="8" y="16" font-family="IBM Plex Mono" font-size="9" fill="#64647a">Peak: 1,840ms</text>
+        </svg>
+        <div class="flow">
+          <div class="fn before"><div class="fn-title">High Load</div><div class="fn-sub">Concurrent auth</div></div>
+          <div class="arr">→</div>
+          <div class="fn warn"><div class="fn-title">Pool Exhausted</div><div class="fn-sub">New conn / spike</div></div>
+          <div class="arr">→</div>
+          <div class="fn warn"><div class="fn-title">Full Table Scans</div><div class="fn-sub">No index on auth</div></div>
+          <div class="arr">→</div>
+          <div class="fn warn"><div class="fn-title">SLA Breach</div><div class="fn-sub">1,840ms avg</div></div>
+        </div>
+      </div>
+
+      <div class="panel" id="p1b">
+        <div style="font-size:13px;font-weight:700;color:var(--ink);margin-bottom:18px">5 layers — all misconfigured</div>
+        <div class="ba-list">
+          <div class="ba-item">
+            <div class="ba-top"><span class="ba-name">PostgreSQL Connection Pool</span><div class="ba-tags"><span class="ba-tag before">Misconfigured</span><span class="ba-tag after-b">Tuned</span></div></div>
+            <div class="track"><div class="fill-before"></div><div class="fill-after fill-b" data-w="88%"></div></div>
+          </div>
+          <div class="ba-item">
+            <div class="ba-top"><span class="ba-name">Auth Table Query Plan</span><div class="ba-tags"><span class="ba-tag before">Full Scan</span><span class="ba-tag after-b">Indexed</span></div></div>
+            <div class="track"><div class="fill-before"></div><div class="fill-after fill-b" data-w="96%"></div></div>
+          </div>
+          <div class="ba-item">
+            <div class="ba-top"><span class="ba-name">HTTP Keep-Alive</span><div class="ba-tags"><span class="ba-tag before">Disabled</span><span class="ba-tag after-b">Enabled</span></div></div>
+            <div class="track"><div class="fill-before"></div><div class="fill-after fill-b" data-w="100%"></div></div>
+          </div>
+          <div class="ba-item">
+            <div class="ba-top"><span class="ba-name">Application Cache</span><div class="ba-tags"><span class="ba-tag before">None</span><span class="ba-tag after-b">Active</span></div></div>
+            <div class="track"><div class="fill-before"></div><div class="fill-after fill-b" data-w="92%"></div></div>
+          </div>
+          <div class="ba-item">
+            <div class="ba-top"><span class="ba-name">Linux TCP Buffers</span><div class="ba-tags"><span class="ba-tag before">Under-tuned</span><span class="ba-tag after-b">Optimised</span></div></div>
+            <div class="track"><div class="fill-before"></div><div class="fill-after fill-b" data-w="85%"></div></div>
+          </div>
+        </div>
+      </div>
+
+      <div class="panel" id="p1c">
+        <svg class="chart" viewBox="0 0 700 90" preserveAspectRatio="none">
+          <defs>
+            <linearGradient id="gg1" x1="0" y1="0" x2="0" y2="1">
+              <stop offset="0%" stop-color="#00875a" stop-opacity="0.15"/>
+              <stop offset="100%" stop-color="#00875a" stop-opacity="0"/>
+            </linearGradient>
+          </defs>
+          <path d="M0,80 L80,78 L160,81 L240,77 L320,79 L400,76 L480,80 L560,78 L700,79"
+            fill="none" stroke="#00875a" stroke-width="2.5"/>
+          <path d="M0,80 L80,78 L160,81 L240,77 L320,79 L400,76 L480,80 L560,78 L700,79 L700,90 L0,90Z"
+            fill="url(#gg1)"/>
+          <line x1="0" y1="76" x2="700" y2="76" stroke="#e4e4ef" stroke-width="1" stroke-dasharray="4"/>
+          <text x="8" y="73" font-family="IBM Plex Mono" font-size="9" fill="#7a7a96">SLA limit</text>
+          <text x="8" y="70" font-family="IBM Plex Mono" font-size="9" fill="#00875a">Avg: 220ms ✓</text>
+        </svg>
+        <div class="flow">
+          <div class="fn before"><div class="fn-title">High Load</div><div class="fn-sub">Same users</div></div>
+          <div class="arr">→</div>
+          <div class="fn after-g"><div class="fn-title">Pool Handles It</div><div class="fn-sub">Connections reused</div></div>
+          <div class="arr">→</div>
+          <div class="fn after-g"><div class="fn-title">Cache Hit</div><div class="fn-sub">DB rarely touched</div></div>
+          <div class="arr">→</div>
+          <div class="fn after-b"><div class="fn-title">220ms</div><div class="fn-sub">SLA exceeded ✓</div></div>
+        </div>
+        <div class="callout pos">
+          <div class="cl-head">Outcome</div>
+          <div class="cl-items">
+            <div class="cl-item">80% reduction in response time · 50% throughput gain · no new hardware</div>
+            <div class="cl-item">Planned infrastructure scale-up cancelled entirely</div>
+            <div class="cl-item">99.9% uptime certified under peak production load</div>
+          </div>
+        </div>
+      </div>
+
+      <div class="stack-wrap">
+        <span class="chip">PostgreSQL</span><span class="chip">RHEL 8.6</span><span class="chip">F5</span>
+        <span class="chip">pg_badger</span><span class="chip">JProfiler</span><span class="chip">Kubernetes</span>
+        <span class="chip">Prometheus</span><span class="chip">Grafana</span><span class="chip">LoadRunner</span>
+      </div>
+    </div>
+  </div>
+
+  <!-- ══ CS 2 ══ -->
+  <div class="cs" id="cs2">
+    <div class="cs-eyebrow eyebrow-g"><span class="pip pip-g"></span>Architecture Migration · OpenText 2022–2024</div>
+    <h2>Identity Platform Re-Architecture — SiteMinder → NetIQ, 30% Efficiency Gain</h2>
+
+    <div class="metrics-row">
+      <div class="mc mc-g"><div class="mc-num" data-count="30" data-suf="%↑">0</div><div class="mc-lbl">System Efficiency</div></div>
+      <div class="mc mc-b"><div class="mc-num" data-static="Zero">Zero</div><div class="mc-lbl">Production Downtime</div></div>
+      <div class="mc mc-a"><div class="mc-num" data-static="IaC">IaC</div><div class="mc-lbl">Helm Deployment</div></div>
+    </div>
+
+    <div class="diag">
+      <div class="tabs">
+        <div class="tab on-g" data-cs="cs2" data-p="p2a">Before</div>
+        <div class="tab" data-cs="cs2" data-p="p2b">Changes</div>
+        <div class="tab" data-cs="cs2" data-p="p2c">After</div>
+      </div>
+
+      <div class="panel on" id="p2a">
+        <div style="font-size:13px;font-weight:700;color:var(--body);margin-bottom:16px">SiteMinder — Monolithic, No Cache, Manual Deploys</div>
+        <div class="flow">
+          <div class="fn before"><div class="fn-title">Auth Request</div><div class="fn-sub">Every request</div></div>
+          <div class="arr">→</div>
+          <div class="fn before"><div class="fn-title">SiteMinder</div><div class="fn-sub">Monolithic</div></div>
+          <div class="arr">→</div>
+          <div class="fn warn"><div class="fn-title">Direct DB Hit</div><div class="fn-sub">No cache at all</div></div>
+          <div class="arr">→</div>
+          <div class="fn before"><div class="fn-title">Manual Deploy</div><div class="fn-sub">Days to replicate</div></div>
+        </div>
+        <div class="callout">
+          <div class="cl-head">Key gaps</div>
+          <div class="cl-items">
+            <div class="cl-item">Every identity check hits the database — no caching at any layer</div>
+            <div class="cl-item">No performance baseline — no definition of "normal"</div>
+            <div class="cl-item">Manual deployments — environment setup takes days, not minutes</div>
+          </div>
+        </div>
+      </div>
+
+      <div class="panel" id="p2b">
+        <div style="font-size:13px;font-weight:700;color:var(--ink);margin-bottom:18px">What changed across the migration</div>
+        <div class="ba-list">
+          <div class="ba-item">
+            <div class="ba-top"><span class="ba-name">Caching Layer</span><div class="ba-tags"><span class="ba-tag before">None</span><span class="ba-tag after-g">Active</span></div></div>
+            <div class="track"><div class="fill-before"></div><div class="fill-after fill-g" data-w="95%"></div></div>
+          </div>
+          <div class="ba-item">
+            <div class="ba-top"><span class="ba-name">Deployment Speed</span><div class="ba-tags"><span class="ba-tag before">Days</span><span class="ba-tag after-g">Minutes (Helm IaC)</span></div></div>
+            <div class="track"><div class="fill-before"></div><div class="fill-after fill-g" data-w="100%"></div></div>
+          </div>
+          <div class="ba-item">
+            <div class="ba-top"><span class="ba-name">Observability</span><div class="ba-tags"><span class="ba-tag before">None</span><span class="ba-tag after-g">Prometheus + Grafana</span></div></div>
+            <div class="track"><div class="fill-before"></div><div class="fill-after fill-g" data-w="100%"></div></div>
+          </div>
+          <div class="ba-item">
+            <div class="ba-top"><span class="ba-name">Architecture</span><div class="ba-tags"><span class="ba-tag before">Monolithic</span><span class="ba-tag after-g">Separated layers</span></div></div>
+            <div class="track"><div class="fill-before"></div><div class="fill-after fill-g" data-w="85%"></div></div>
+          </div>
+        </div>
+      </div>
+
+      <div class="panel" id="p2c">
+        <div style="font-size:13px;font-weight:700;color:var(--green);margin-bottom:16px">NetIQ — Clean Architecture, Automated, Observable</div>
+        <div class="flow">
+          <div class="fn before"><div class="fn-title">Auth Request</div><div class="fn-sub">Incoming</div></div>
+          <div class="arr">→</div>
+          <div class="fn after-g"><div class="fn-title">Cache Hit</div><div class="fn-sub">Rarely hits DB</div></div>
+          <div class="arr">→</div>
+          <div class="fn after-g"><div class="fn-title">NetIQ</div><div class="fn-sub">Clean separation</div></div>
+          <div class="arr">→</div>
+          <div class="fn after-b"><div class="fn-title">Helm Deploy</div><div class="fn-sub">IaC · Minutes</div></div>
+        </div>
+        <div class="callout pos">
+          <div class="cl-head">Outcome</div>
+          <div class="cl-items">
+            <div class="cl-item">30% system efficiency improvement post-migration</div>
+            <div class="cl-item">Zero production downtime during the full migration</div>
+            <div class="cl-item">Findings documented as internal White Paper on performance practices</div>
+          </div>
+        </div>
+      </div>
+
+      <div class="stack-wrap">
+        <span class="chip">NetIQ</span><span class="chip">SiteMinder</span><span class="chip">C++</span>
+        <span class="chip">Helm Charts</span><span class="chip">RHEL 8.6</span><span class="chip">Kubernetes</span>
+        <span class="chip">Prometheus</span><span class="chip">Grafana</span><span class="chip">GCP</span>
+      </div>
+    </div>
+  </div>
+
+  <!-- ══ CS 3 ══ -->
+  <div class="cs" id="cs3">
+    <div class="cs-eyebrow eyebrow-a"><span class="pip pip-a"></span>KVM / Hypervisor · IBM 2024–Present</div>
+    <h2>NUMA Misconfiguration on zServer — Invisible to All Monitoring Tools</h2>
+
+    <div class="metrics-row">
+      <div class="mc mc-a"><div class="mc-num" data-count="30" data-suf="%↑">0</div><div class="mc-lbl">VM Density</div></div>
+      <div class="mc mc-g"><div class="mc-num" data-static="Eliminated">Eliminated</div><div class="mc-lbl">Latency Spikes</div></div>
+      <div class="mc mc-b"><div class="mc-num" data-static="Zero">Zero</div><div class="mc-lbl">Downtime</div></div>
+    </div>
+
+    <div class="diag">
+      <div class="tabs">
+        <div class="tab on-a" data-cs="cs3" data-p="p3a">The Problem</div>
+        <div class="tab" data-cs="cs3" data-p="p3b">NUMA Diagnosis</div>
+        <div class="tab" data-cs="cs3" data-p="p3c">After Fix</div>
+      </div>
+
+      <div class="panel on" id="p3a">
+        <div style="font-size:13px;font-weight:700;color:var(--body);margin-bottom:8px">Every dashboard showed healthy metrics. Spikes were real.</div>
+        <div style="font-family:'IBM Plex Mono',monospace;font-size:11px;color:var(--muted);margin-bottom:18px">CPU: OK · Memory: OK · Network: OK · App Layer: OK — yet latency spiking</div>
+        <div class="flow">
+          <div class="fn warn"><div class="fn-title">Latency Spike</div><div class="fn-sub">Unexplained</div></div>
+          <div class="arr">→</div>
+          <div class="fn before"><div class="fn-title">Check Dashboards</div><div class="fn-sub">All metrics green</div></div>
+          <div class="arr">→</div>
+          <div class="fn before"><div class="fn-title">No Answer</div><div class="fn-sub">Monitoring stops here</div></div>
+          <div class="arr">→</div>
+          <div class="fn after-b"><div class="fn-title">Go Deeper</div><div class="fn-sub">Kernel level</div></div>
+        </div>
+        <div class="callout warn">
+          <div class="cl-head">Why monitoring missed it</div>
+          <div class="cl-items">
+            <div class="cl-item">Root cause was at the NUMA scheduler level — below Prometheus visibility</div>
+            <div class="cl-item">IRQ affinity and memory ballooning are not surfaced by standard tooling</div>
+          </div>
+        </div>
+      </div>
+
+      <div class="panel" id="p3b">
+        <div style="font-size:13px;font-weight:700;color:var(--amber);margin-bottom:16px">vCPUs crossing NUMA node boundaries on every context switch</div>
+        <div class="numa">
+          <div class="nbox">
+            <div class="nbox-head bad-h">Before — NUMA Misaligned</div>
+            <div class="nbox-body">
+              <div class="vcpu-row">
+                <div class="vcpu stale">vCPU0</div>
+                <div class="vcpu-info">
+                  <div class="v-label">NUMA Node 0</div>
+                  <div class="v-sub warn">→ Memory on Node 1 (+40ns)</div>
+                </div>
+              </div>
+              <div class="vcpu-row">
+                <div class="vcpu stale">vCPU1</div>
+                <div class="vcpu-info">
+                  <div class="v-label">NUMA Node 0</div>
+                  <div class="v-sub warn">→ Memory on Node 1 (+40ns)</div>
+                </div>
+              </div>
+              <div style="padding:7px 8px;background:var(--neutral-dim);border-radius:4px;font-family:'IBM Plex Mono',monospace;font-size:9px;color:var(--neutral);margin-top:4px">
+                Every context switch crosses node boundary
+              </div>
+            </div>
+          </div>
+          <div class="nbox">
+            <div class="nbox-head good-h">After — CPU Pinned</div>
+            <div class="nbox-body">
+              <div class="vcpu-row">
+                <div class="vcpu fixed">vCPU0</div>
+                <div class="vcpu-info">
+                  <div class="v-label">NUMA Node 0</div>
+                  <div class="v-sub ok">→ Memory on Node 0 (local)</div>
+                </div>
+              </div>
+              <div class="vcpu-row">
+                <div class="vcpu fixed">vCPU1</div>
+                <div class="vcpu-info">
+                  <div class="v-label">NUMA Node 0</div>
+                  <div class="v-sub ok">→ Memory on Node 0 (local)</div>
+                </div>
+              </div>
+              <div style="padding:7px 8px;background:var(--green-dim);border-radius:4px;font-family:'IBM Plex Mono',monospace;font-size:9px;color:var(--green);margin-top:4px">
+                CPU pinning enforces NUMA locality
+              </div>
+            </div>
+          </div>
+        </div>
+        <div style="font-family:'IBM Plex Mono',monospace;font-size:11px;color:var(--muted)">
+          Also fixed: Memory ballooning thresholds · IRQ affinity · I/O scheduler defaults
+        </div>
+      </div>
+
+      <div class="panel" id="p3c">
+        <div style="font-size:13px;font-weight:700;color:var(--green);margin-bottom:18px">Spikes eliminated — root cause confirmed at kernel level</div>
+        <div class="ba-list">
+          <div class="ba-item">
+            <div class="ba-top"><span class="ba-name">Latency Spikes</span><div class="ba-tags"><span class="ba-tag before">Frequent</span><span class="ba-tag after-a">Zero</span></div></div>
+            <div class="track"><div class="fill-before"></div><div class="fill-after fill-a" data-w="100%"></div></div>
+          </div>
+          <div class="ba-item">
+            <div class="ba-top"><span class="ba-name">VM Density</span><div class="ba-tags"><span class="ba-tag before">Below capacity</span><span class="ba-tag after-a">+30% efficiency</span></div></div>
+            <div class="track"><div class="fill-before"></div><div class="fill-after fill-a" data-w="78%"></div></div>
+          </div>
+          <div class="ba-item">
+            <div class="ba-top"><span class="ba-name">Memory Access</span><div class="ba-tags"><span class="ba-tag before">Cross-node +40ns</span><span class="ba-tag after-a">Local — baseline</span></div></div>
+            <div class="track"><div class="fill-before"></div><div class="fill-after fill-a" data-w="100%"></div></div>
+          </div>
+        </div>
+        <div class="callout pos">
+          <div class="cl-head">Outcome</div>
+          <div class="cl-items">
+            <div class="cl-item">Latency spikes completely eliminated — confirmed at NUMA scheduler level</div>
+            <div class="cl-item">30% increase in VM density on existing hardware — no new spend</div>
+            <div class="cl-item">Fix established as repeatable kernel baseline for future workload onboarding</div>
+          </div>
+        </div>
+      </div>
+
+      <div class="stack-wrap">
+        <span class="chip">KVM</span><span class="chip">IBM zServer</span><span class="chip">Linux Kernel</span>
+        <span class="chip">NUMA</span><span class="chip">CPU Pinning</span><span class="chip">IRQ Affinity</span>
+        <span class="chip">Memory Ballooning</span><span class="chip">RHEL</span><span class="chip">Node Exporter</span>
+      </div>
+    </div>
+  </div>
+
+</div>
+</div>
+
+<div class="note">
+  <div class="wrap">
+    <p><strong>Note:</strong> Client names omitted per confidentiality. All metrics verified against pre-engagement baselines.</p>
+  </div>
+</div>
+
+<footer class="footer">
+  <div class="wrap">
+    <div class="footer-inner">
+      <span class="footer-copy">© 2025 Anshika Pundeel · Performance Engineering</span>
+      <div class="footer-links">
+        <a href="https://www.linkedin.com/in/anshika-pundeel/" target="_blank">LinkedIn</a>
+        <a href="index.html">Home</a>
+        <a href="mailto:anshikasatsangi2@gmail.com">Email</a>
+      </div>
+    </div>
+  </div>
+</footer>
+
+<script>
+// Tab switching
+document.querySelectorAll('.tab').forEach(tab => {
+  tab.addEventListener('click', () => {
+    const csId = tab.dataset.cs;
+    const panelId = tab.dataset.p;
+    const cs = document.getElementById(csId);
+    const accentClass = cs.querySelector('.tab.on-b') ? 'on-b' :
+                        cs.querySelector('.tab.on-g') ? 'on-g' : 'on-a';
+    cs.querySelectorAll('.tab').forEach(t => t.classList.remove('on-b','on-g','on-a'));
+    cs.querySelectorAll('.panel').forEach(p => p.classList.remove('on'));
+    tab.classList.add(accentClass);
+    document.getElementById(panelId).classList.add('on');
+    animateBars(document.getElementById(panelId));
+  });
+});
+
+// Fix tab active class on click
+document.querySelectorAll('.tab').forEach(tab => {
+  tab.addEventListener('click', () => {
+    const csId = tab.dataset.cs;
+    const cs = document.getElementById(csId);
+    const firstActive = cs.querySelector('.tab.on-b,.tab.on-g,.tab.on-a');
+    const cls = firstActive ? [...firstActive.classList].find(c => c.startsWith('on-')) : 'on-b';
+    cs.querySelectorAll('.tab').forEach(t => t.classList.remove('on-b','on-g','on-a'));
+    tab.classList.add(cls);
+  });
+});
+
+// Counter animation
+function animateCount(el) {
+  if (el.dataset.static) return;
+  const target = parseFloat(el.dataset.count);
+  const suf = el.dataset.suf || '';
+  const dec = parseInt(el.dataset.dec || '0');
+  const dur = 1300;
+  const start = performance.now();
+  function step(now) {
+    const t = Math.min((now - start) / dur, 1);
+    const ease = 1 - Math.pow(1 - t, 3);
+    const val = target * ease;
+    el.textContent = (dec > 0 ? val.toFixed(dec) : Math.round(val)) + suf;
+    if (t < 1) requestAnimationFrame(step);
+  }
+  requestAnimationFrame(step);
+}
+
+// Bar animation
+function animateBars(container) {
+  if (!container) return;
+  container.querySelectorAll('.fill-after[data-w]').forEach(b => {
+    b.style.width = '0';
+    setTimeout(() => { b.style.width = b.dataset.w; }, 80);
+  });
+}
+
+// Scroll observer
+const obs = new IntersectionObserver(entries => {
+  entries.forEach(e => {
+    if (e.isIntersecting) {
+      e.target.classList.add('visible');
+      e.target.querySelectorAll('.mc-num[data-count]').forEach(animateCount);
+      e.target.querySelectorAll('.panel.on').forEach(animateBars);
+      obs.unobserve(e.target);
+    }
+  });
+}, { threshold: 0.12 });
+
+document.querySelectorAll('.cs').forEach(cs => obs.observe(cs));
+</script>
+</body>
+</html>
