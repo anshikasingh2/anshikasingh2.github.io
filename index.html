@@ -1,971 +1,508 @@
 <!DOCTYPE html>
 <html lang="en">
 <head>
-    <meta charset="UTF-8">
-    <meta name="viewport" content="width=device-width, initial-scale=1.0">
-    
-    <title>SaaS Performance & Scalability Engineering Partner</title>
-    <meta name="description" content="Helping product teams validate scalability, performance risk, and SLA readiness. Independent, engineering-led assessments.">
-    <meta name="keywords" content="Scalability Validation, Performance Risk, SLA Readiness, SaaS Engineering, Capacity Planning, System Behavior">
-    
-    <style>
-        /* --- PROFESSIONAL DESIGN SYSTEM --- */
-        :root {
-            /* Palette: Trustworthy, High-Contrast Enterprise Colors */
-            --primary: #2563eb;       /* Royal Blue */
-            --primary-hover: #1d4ed8; /* Darker Blue interaction */
-            --navy-900: #0f172a;      /* Headings (Almost Black) */
-            --slate-600: #475569;     /* Body Text (Readable Grey) */
-            --slate-100: #f1f5f9;     /* Subtle Backgrounds */
-            --border: #e2e8f0;        /* crisp borders */
-            --white: #ffffff;
-            
-            /* Spacing & Layout */
-            --max-width: 1140px;      /* Standard Modern Width */
-            --radius: 8px;            /* Clean, slight curves */
-            --shadow: 0 4px 6px -1px rgba(0, 0, 0, 0.05), 0 2px 4px -1px rgba(0, 0, 0, 0.03);
-            --shadow-hover: 0 10px 15px -3px rgba(0, 0, 0, 0.08), 0 4px 6px -2px rgba(0, 0, 0, 0.04);
-        }
-
-        /* --- RESET --- */
-        * { margin: 0; padding: 0; box-sizing: border-box; }
-
-        html {
-            scroll-behavior: smooth; /* Smooth scroll to the animation */
-        }
-
-        body {
-            font-family: -apple-system, BlinkMacSystemFont, "Inter", "Segoe UI", Roboto, Helvetica, Arial, sans-serif;
-            background-color: var(--white);
-            color: var(--navy-900);
-            line-height: 1.6;
-            -webkit-font-smoothing: antialiased; /* Crisp text rendering */
-        }
-
-        a { text-decoration: none; transition: 0.2s; }
-        ul { list-style: none; }
-
-        /* --- TYPOGRAPHY --- */
-        h1, h2, h3, h4 {
-            color: var(--navy-900);
-            line-height: 1.25;
-            letter-spacing: -0.025em; /* Tight tracking for professional look */
-            font-weight: 700;
-            margin-bottom: 1rem;
-        }
-
-        p {
-            color: var(--slate-600);
-            font-size: 1.05rem; /* Slightly larger for readability */
-            margin-bottom: 1.5rem;
-        }
-
-        strong { font-weight: 600; color: var(--navy-900); }
-
-        /* --- LAYOUT UTILITIES --- */
-        .container {
-            max-width: var(--max-width);
-            margin: 0 auto;
-            padding: 0 24px;
-        }
-
-        .section-padding { padding: 90px 0; }
-        .text-center { text-align: center; }
-        
-        .section-header {
-            max-width: 700px;
-            margin: 0 auto 60px; /* Consistent gap between header and grid */
-            text-align: center;
-        }
-        
-        .section-header h2 { font-size: 2.25rem; }
-
-        /* --- COMPONENTS --- */
-        
-        /* Buttons */
-        .btn {
-            display: inline-flex;
-            align-items: center;
-            justify-content: center;
-            padding: 14px 32px;
-            border-radius: var(--radius);
-            font-weight: 600;
-            font-size: 1rem;
-            transition: all 0.2s ease;
-            cursor: pointer;
-        }
-
-        .btn-primary {
-            background-color: var(--primary);
-            color: var(--white);
-            border: 1px solid var(--primary);
-        }
-        .btn-primary:hover {
-            background-color: var(--primary-hover);
-            transform: translateY(-1px);
-            box-shadow: 0 4px 12px rgba(37, 99, 235, 0.2);
-        }
-
-        .btn-outline {
-            background-color: transparent;
-            color: var(--primary);
-            border: 2px solid var(--primary);
-        }
-        .btn-outline:hover {
-            background-color: var(--slate-100);
-        }
-
-        /* --- HERO SECTION STYLES (UPDATED) --- */
-        .hero {
-            padding: 140px 0 100px;
-            background: radial-gradient(circle at 50% 0%, #f1f5f9 0%, #ffffff 60%);
-            border-bottom: 1px solid var(--border);
-        }
-
-        .hero h1 {
-            font-size: 3.5rem; 
-            max-width: 950px;
-            margin: 0 auto 24px;
-            color: var(--navy-900);
-            letter-spacing: -0.03em;
-        }
-
-        .hero-lead {
-            font-size: 1.35rem;
-            color: var(--slate-600);
-            max-width: 800px;
-            margin: 0 auto 32px;
-            font-weight: 500;
-        }
-
-        /* Badge */
-        .hero-badge {
-            display: inline-flex; align-items: center; gap: 8px;
-            background: #f1f5f9; color: #475569;
-            padding: 6px 12px; border-radius: 99px;
-            font-size: 0.75rem; font-weight: 700; letter-spacing: 0.5px;
-            border: 1px solid #e2e8f0; margin-bottom: 25px;
-        }
-        .pulse-status { width: 6px; height: 6px; background: #22c55e; border-radius: 50%; box-shadow: 0 0 0 2px rgba(34,197,94,0.2); animation: pulse-green 2s infinite; }
-        @keyframes pulse-green { 0% { box-shadow: 0 0 0 0 rgba(34,197,94,0.4); } 70% { box-shadow: 0 0 0 6px rgba(34,197,94,0); } 100% { box-shadow: 0 0 0 0 rgba(34,197,94,0); } }
-
-        /* Trust Bar */
-        .trust-bar {
-            display: flex; flex-direction: column; align-items: center; gap: 10px;
-            margin-bottom: 40px;
-        }
-        .trust-text {
-            font-size: 0.85rem; color: #94a3b8; font-weight: 500; text-transform: uppercase; letter-spacing: 1px;
-        }
-        .logo-group {
-            display: flex; align-items: center; gap: 15px;
-            font-size: 1.5rem; font-weight: 800; color: #334155;
-        }
-        
-        /* UPDATED: Inherits the dark/blue color from the parent group */
-        .separator { color: inherit; font-weight: 100; opacity: 0.5; }
-
-        /* Hero Actions */
-        .hero-actions {
-            display: flex; align-items: center; justify-content: center; gap: 20px;
-        }
-        .btn-text { color: #64748b; font-weight: 600; font-size: 0.95rem; }
-        .btn-text:hover { color: var(--primary); text-decoration: underline; }
-
-        /* --- ANIMATION WIDGET CSS --- */
-        .impact-engine-container {
-            font-family: 'Inter', system-ui, -apple-system, sans-serif;
-            background: #000; /* Deep Black */
-            color: #fff;
-            padding: 40px;
-            border-radius: 16px;
-            border: 1px solid #333;
-            max-width: 900px; /* Wider for impact */
-            margin: 0 auto;
-            position: relative;
-            overflow: hidden;
-            box-shadow: 0 0 50px rgba(0,0,0,0.8);
-        }
-
-        .impact-engine-container::before {
-            content: "";
-            position: absolute;
-            top: 0; left: 0; width: 100%; height: 100%;
-            background: linear-gradient(rgba(18, 16, 16, 0) 50%, rgba(0, 0, 0, 0.25) 50%), linear-gradient(90deg, rgba(255, 0, 0, 0.06), rgba(0, 255, 0, 0.02), rgba(0, 0, 255, 0.06));
-            background-size: 100% 2px, 3px 100%;
-            pointer-events: none;
-            z-index: 10;
-        }
-
-        .engine-header {
-            text-align: center;
-            margin-bottom: 40px;
-            position: relative;
-            z-index: 2;
-        }
-
-        /* .impact-engine-container .company-name {
-            font-size: 2.5rem; 
-            font-weight: 800;
-            letter-spacing: -1px;
-            background: linear-gradient(90deg, #fff, #888);
-            -webkit-background-clip: text;
-            -webkit-text-fill-color: transparent;
-            margin-bottom: 10px;
-        } */
-
-        .impact-engine-container .company-name {
-    font-size: 2.5rem; 
-    font-weight: 800;
-    letter-spacing: -1px;
-    background: linear-gradient(90deg, #fff, #888);
-
-    /* Add this line */
-    background-clip: text;
-
-    -webkit-background-clip: text;
-    -webkit-text-fill-color: transparent;
-
-    margin-bottom: 10px;
+<meta charset="UTF-8">
+<meta name="viewport" content="width=device-width, initial-scale=1.0">
+<title>Anshika Pundeel – Performance Engineering</title>
+<meta name="description" content="On-demand performance engineering for SaaS, enterprise, and hybrid systems. IBM and OpenText experience.">
+<link rel="preconnect" href="https://fonts.googleapis.com">
+<link href="https://fonts.googleapis.com/css2?family=IBM+Plex+Mono:ital,wght@0,400;0,500;0,600;0,700;1,400&family=Figtree:wght@400;500;600;700;800;900&display=swap" rel="stylesheet">
+<style>
+:root {
+  --ink:      #0a0a0f;
+  --ink2:     #1e1e2e;
+  --body:     #3a3a52;
+  --muted:    #7a7a96;
+  --rule:     #e4e4ef;
+  --bg:       #ffffff;
+  --bg2:      #f7f7fc;
+  --blue:     #0066ff;
+  --blue-dim: #e8f0ff;
+  --green:    #00875a;
+  --green-dim:#e3f5ee;
+  --red:      #cc2200;
+  --amber:    #b45309;
+  --mono:     'IBM Plex Mono', monospace;
+  --sans:     'Figtree', sans-serif;
 }
+*,*::before,*::after{box-sizing:border-box;margin:0;padding:0}
+html{scroll-behavior:smooth}
+body{font-family:var(--sans);background:var(--bg);color:var(--ink);line-height:1.6;-webkit-font-smoothing:antialiased;overflow-x:hidden}
+a{color:inherit;text-decoration:none}
 
-        .scenario-desc {
-            font-size: 1.1rem;
-            color: #888;
-            max-width: 600px;
-            margin: 0 auto;
-        }
+.wrap{max-width:1080px;margin:0 auto;padding:0 28px}
 
-        .dashboard-grid {
-            display: grid;
-            grid-template-columns: 1fr 1fr 1fr;
-            gap: 20px;
-            position: relative;
-            z-index: 2;
-        }
+/* NAV */
+.nav{position:sticky;top:0;z-index:100;background:rgba(255,255,255,.94);backdrop-filter:blur(12px);border-bottom:1px solid var(--rule)}
+.nav-inner{display:flex;align-items:center;justify-content:space-between;padding:16px 28px;max-width:1080px;margin:0 auto}
+.nav-brand{font-family:var(--mono);font-size:13px;font-weight:600;letter-spacing:.04em;color:var(--ink)}
+.nav-brand b{color:var(--blue)}
+.nav-links{display:flex;align-items:center;gap:6px;list-style:none}
+.nav-links a{font-size:13px;font-weight:500;color:var(--body);padding:6px 12px;border-radius:6px;transition:color .2s,background .2s}
+.nav-links a:hover{color:var(--ink);background:var(--bg2)}
+.nav-pill{background:var(--blue)!important;color:#fff!important;border-radius:6px;font-weight:600!important}
+.nav-pill:hover{background:#004ecc!important}
+@media(max-width:640px){.nav-links{display:none}}
 
-        .metric-card {
-            background: #111;
-            border-radius: 12px;
-            padding: 25px 15px;
-            text-align: center;
-            border: 1px solid #333;
-            transition: all 0.5s ease;
-            position: relative;
-        }
+/* HERO */
+.hero{padding:96px 0 80px;border-bottom:1px solid var(--rule);background:radial-gradient(ellipse 60% 50% at 70% 0%,rgba(0,102,255,.06) 0%,transparent 60%),var(--bg)}
+.hero-grid{display:grid;grid-template-columns:1fr 320px;gap:64px;align-items:center}
+@media(max-width:780px){.hero-grid{grid-template-columns:1fr}.hero-sidebar{display:none}}
 
-        .metric-label {
-            font-size: 0.9rem;
-            text-transform: uppercase;
-            letter-spacing: 2px;
-            color: #666;
-            margin-bottom: 15px;
-            font-weight: 600;
-        }
+.avail-tag{display:inline-flex;align-items:center;gap:7px;font-family:var(--mono);font-size:11px;font-weight:500;letter-spacing:.1em;text-transform:uppercase;color:var(--green);background:var(--green-dim);border:1px solid rgba(0,135,90,.2);padding:5px 12px;border-radius:100px;margin-bottom:28px}
+.avail-dot{width:6px;height:6px;border-radius:50%;background:var(--green);animation:pulse 2s ease-in-out infinite}
+@keyframes pulse{0%,100%{opacity:1;transform:scale(1)}50%{opacity:.5;transform:scale(.85)}}
 
-        .metric-value {
-            font-size: 2.2rem;
-            font-weight: 700;
-            font-family: 'Courier New', monospace;
-            display: block;
-            color: #fff;
-        }
+.hero-h1{font-size:clamp(36px,5.5vw,64px);font-weight:900;line-height:1.05;letter-spacing:-.03em;color:var(--ink);margin-bottom:22px}
+.hero-h1 .accent{color:var(--blue)}
+.hero-lead{font-size:17px;font-weight:400;line-height:1.75;color:var(--body);max-width:520px;margin-bottom:36px}
+.hero-lead strong{color:var(--ink);font-weight:600}
+.hero-ctas{display:flex;gap:12px;flex-wrap:wrap}
 
-        /* States */
-        .state-critical .metric-card {
-            border-color: #5c1818;
-            background: #1a0505;
-            box-shadow: 0 0 15px rgba(255, 0, 0, 0.1);
-        }
-        .state-critical .metric-value { color: #ff4444; text-shadow: 0 0 10px rgba(255,0,0,0.5); }
-        .state-critical .company-name { opacity: 0.7; }
+.btn{display:inline-flex;align-items:center;gap:8px;font-family:var(--sans);font-weight:600;font-size:14px;padding:13px 24px;border-radius:8px;transition:all .2s;cursor:pointer;border:none;letter-spacing:-.01em}
+.btn-blue{background:var(--blue);color:#fff}
+.btn-blue:hover{background:#004ecc;transform:translateY(-1px);box-shadow:0 8px 24px rgba(0,102,255,.25)}
+.btn-ghost{background:transparent;color:var(--ink);border:1.5px solid var(--rule)}
+.btn-ghost:hover{border-color:var(--ink2);background:var(--bg2)}
 
-        .state-optimized .metric-card.cost { border-color: #2ea043; background: #051a0a; } 
-        .state-optimized .metric-card.revenue { border-color: #dbab09; background: #1a1500; } 
-        .state-optimized .metric-card.latency { border-color: #2ea043; background: #051a0a; } 
+/* Result card */
+.result-card{border:1.5px solid var(--rule);border-radius:12px;overflow:hidden;background:var(--bg);box-shadow:0 2px 20px rgba(0,0,0,.06)}
+.rc-head{padding:14px 18px;border-bottom:1px solid var(--rule);background:var(--bg2);display:flex;align-items:center;justify-content:space-between}
+.rc-head-label{font-family:var(--mono);font-size:11px;font-weight:500;letter-spacing:.08em;text-transform:uppercase;color:var(--muted)}
+.rc-live{display:flex;align-items:center;gap:5px;font-family:var(--mono);font-size:10px;color:var(--green)}
+.rc-live::before{content:'';display:block;width:5px;height:5px;border-radius:50%;background:var(--green);animation:pulse 2s infinite}
+.rc-row{display:flex;align-items:center;justify-content:space-between;padding:13px 18px;border-bottom:1px solid var(--rule);gap:12px}
+.rc-row:last-child{border-bottom:none}
+.rc-key{font-size:13px;color:var(--body)}
+.rc-val{font-family:var(--mono);font-size:13px;font-weight:600;text-align:right}
+.rc-val.g{color:var(--green)}.rc-val.b{color:var(--blue)}.rc-val.a{color:var(--amber)}
 
-        .state-optimized .metric-value.good { color: #2ea043; text-shadow: 0 0 15px rgba(46, 160, 67, 0.6); }
-        .state-optimized .metric-value.gold { color: #f2cc0c; text-shadow: 0 0 15px rgba(242, 204, 12, 0.6); }
+/* TRUST */
+.trust{border-bottom:1px solid var(--rule);background:var(--bg2);padding:18px 0}
+.trust-inner{display:flex;align-items:center;justify-content:center;gap:24px;flex-wrap:wrap}
+.trust-label{font-family:var(--mono);font-size:11px;letter-spacing:.1em;text-transform:uppercase;color:var(--muted)}
+.trust-logos{display:flex;align-items:center;gap:20px}
+.trust-co{font-family:var(--mono);font-size:14px;font-weight:700;color:var(--ink2);letter-spacing:.04em;opacity:.7;transition:opacity .2s}
+.trust-co:hover{opacity:1}
+.trust-div{color:var(--rule);font-weight:300;font-size:18px}
 
-        .progress-line {
-            width: 0%;
-            height: 4px;
-            background: #2ea043;
-            margin: 30px auto 0;
-            border-radius: 2px;
-            transition: width 2s cubic-bezier(0.22, 1, 0.36, 1);
-            box-shadow: 0 0 10px #2ea043;
-        }
-        
-        .status-text {
-            text-align: center;
-            margin-top: 10px;
-            font-size: 0.8rem;
-            color: #444;
-            font-weight: bold;
-            text-transform: uppercase;
-        }
-        
-        @media (max-width: 700px) {
-            .dashboard-grid { grid-template-columns: 1fr; }
-            .impact-engine-container { padding: 20px; }
-        }
+/* TICKER */
+.ticker{overflow:hidden;border-bottom:1px solid var(--rule);padding:11px 0;background:var(--bg)}
+.ticker-track{display:flex;animation:scroll 28s linear infinite;width:max-content}
+@keyframes scroll{from{transform:translateX(0)}to{transform:translateX(-50%)}}
+.ticker-item{display:flex;align-items:center;gap:10px;padding:0 28px;font-family:var(--mono);font-size:11px;letter-spacing:.1em;text-transform:uppercase;color:var(--muted);white-space:nowrap;border-right:1px solid var(--rule)}
+.ticker-item span{display:inline-block;width:5px;height:5px;border-radius:50%;background:var(--blue);flex-shrink:0}
 
+/* SECTION CHROME */
+.section{padding:80px 0;border-bottom:1px solid var(--rule)}
+.section-alt{background:var(--bg2)}
+.eyebrow{display:inline-flex;align-items:center;gap:8px;font-family:var(--mono);font-size:11px;font-weight:500;letter-spacing:.14em;text-transform:uppercase;color:var(--blue);margin-bottom:14px}
+.eyebrow::before{content:'';display:block;width:20px;height:2px;background:var(--blue)}
+.section-h2{font-size:clamp(24px,3.5vw,38px);font-weight:800;letter-spacing:-.025em;color:var(--ink);line-height:1.1;margin-bottom:14px}
+.section-sub{font-size:16px;color:var(--body);max-width:540px;line-height:1.7;margin-bottom:52px}
 
-        /* --- PROBLEM GRID STYLES --- */
-        .problem-section { background-color: var(--white); }
+/* WIDGET */
+.widget-wrap{border:1.5px solid var(--rule);border-radius:12px;overflow:hidden;max-width:820px;margin:0 auto;box-shadow:0 4px 32px rgba(0,0,0,.07)}
+.widget-topbar{display:flex;align-items:center;justify-content:space-between;padding:14px 22px;background:var(--bg2);border-bottom:1px solid var(--rule)}
+.wt-left{display:flex;gap:7px}
+.wt-dot{width:11px;height:11px;border-radius:50%}
+.wt-dot:nth-child(1){background:#ff5f57}.wt-dot:nth-child(2){background:#febc2e}.wt-dot:nth-child(3){background:#28c840}
+.wt-title{font-family:var(--mono);font-size:11px;letter-spacing:.08em;color:var(--muted);text-transform:uppercase}
+.wt-company{font-family:var(--mono);font-size:12px;font-weight:600;color:var(--ink);letter-spacing:.06em;transition:all .4s}
+.widget-metrics{display:grid;grid-template-columns:repeat(3,1fr);background:var(--bg)}
+.wm-cell{padding:28px 24px;border-right:1px solid var(--rule);transition:background .5s}
+.wm-cell:last-child{border-right:none}
+.wm-label{font-family:var(--mono);font-size:10px;letter-spacing:.12em;text-transform:uppercase;color:var(--muted);margin-bottom:10px}
+.wm-val{font-family:var(--mono);font-size:26px;font-weight:700;color:var(--ink);letter-spacing:-.02em;transition:color .5s}
+.wm-val.bad{color:var(--red)}.wm-val.good{color:var(--green)}.wm-val.gold{color:var(--amber)}
+.wm-cell.bad-bg{background:rgba(204,34,0,.03)}.wm-cell.good-bg{background:rgba(0,135,90,.04)}.wm-cell.gold-bg{background:rgba(180,83,9,.03)}
+.widget-footer{padding:14px 22px;background:var(--bg2);border-top:1px solid var(--rule);display:flex;align-items:center;gap:16px}
+.wf-bar{flex:1;height:3px;background:var(--rule);border-radius:2px;overflow:hidden}
+.wf-fill{height:100%;width:5%;background:var(--red);border-radius:2px;transition:width 1.8s cubic-bezier(.22,1,.36,1),background .5s}
+.wf-status{font-family:var(--mono);font-size:10px;letter-spacing:.1em;text-transform:uppercase;color:var(--muted);min-width:170px;text-align:right;transition:color .4s}
+@media(max-width:560px){.widget-metrics{grid-template-columns:1fr}.wm-cell{border-right:none;border-bottom:1px solid var(--rule)}}
 
-        .diagnostic-grid {
-            display: grid;
-            grid-template-columns: repeat(auto-fit, minmax(400px, 1fr));
-            gap: 30px;
-        }
+/* PROBLEM CARDS */
+.prb-grid{display:grid;grid-template-columns:repeat(2,1fr);gap:16px}
+@media(max-width:640px){.prb-grid{grid-template-columns:1fr}}
+.prb-card{background:var(--bg);border:1.5px solid var(--rule);border-radius:10px;padding:28px;transition:border-color .25s,box-shadow .25s,transform .25s;position:relative;overflow:hidden}
+.prb-card:hover{border-color:var(--blue);box-shadow:0 8px 28px rgba(0,102,255,.1);transform:translateY(-2px)}
+.prb-card::before{content:'';position:absolute;top:0;left:0;right:0;height:3px;background:var(--blue);transform:scaleX(0);transform-origin:left;transition:transform .35s}
+.prb-card:hover::before{transform:scaleX(1)}
+.prb-icon{font-size:28px;margin-bottom:14px}
+.prb-card h3{font-size:16px;font-weight:700;color:var(--ink);margin-bottom:8px;letter-spacing:-.01em}
+.prb-card p{font-size:14px;color:var(--body);line-height:1.7;margin-bottom:14px}
+.prb-tag{font-family:var(--mono);font-size:10px;letter-spacing:.1em;text-transform:uppercase;color:var(--blue);background:var(--blue-dim);padding:3px 8px;border-radius:4px;display:inline-block}
 
-        .risk-card {
-            background: var(--white);
-            border: 1px solid var(--border);
-            border-radius: 12px;
-            padding: 30px;
-            display: flex;
-            gap: 20px;
-            align-items: flex-start;
-            transition: all 0.3s ease;
-            position: relative;
-            overflow: hidden;
-        }
+/* BENTO */
+.bento{display:grid;grid-template-columns:repeat(3,1fr);gap:14px}
+@media(max-width:680px){.bento{grid-template-columns:1fr}}
+.bento-card{background:var(--bg);border:1.5px solid var(--rule);border-radius:10px;padding:28px;transition:border-color .25s,box-shadow .25s}
+.bento-card:hover{border-color:rgba(0,102,255,.35);box-shadow:0 4px 20px rgba(0,102,255,.07)}
+.bento-card.wide{grid-column:span 2;display:flex;gap:28px}
+@media(max-width:680px){.bento-card.wide{grid-column:span 1;flex-direction:column}}
+.bento-num{font-family:var(--mono);font-size:48px;font-weight:700;color:var(--rule);line-height:1;margin-bottom:14px;transition:color .3s;letter-spacing:-.03em}
+.bento-card:hover .bento-num{color:var(--blue-dim)}
+.bento-card h3{font-size:15px;font-weight:700;color:var(--ink);margin-bottom:7px;letter-spacing:-.01em}
+.bento-card p{font-size:13px;color:var(--body);line-height:1.7}
+.chip-row{display:flex;gap:8px;flex-wrap:wrap;margin-top:14px}
+.chip{font-family:var(--mono);font-size:11px;font-weight:500;padding:3px 9px;border-radius:4px}
+.chip.up{background:var(--green-dim);color:var(--green)}.chip.down{background:var(--blue-dim);color:var(--blue)}
 
-        .risk-card:hover {
-            transform: translateY(-4px);
-            box-shadow: 0 12px 24px rgba(0,0,0,0.06);
-            border-color: #fca5a5;
-        }
+/* CREDIBILITY */
+.cred-box{background:var(--bg);border:1.5px solid var(--rule);border-radius:12px;overflow:hidden;box-shadow:0 2px 20px rgba(0,0,0,.05)}
+.cred-head{padding:32px 36px;border-bottom:1px solid var(--rule)}
+.cred-head h3{font-size:20px;font-weight:800;color:var(--ink);letter-spacing:-.02em;margin-bottom:8px}
+.cred-head p{font-size:14px;color:var(--body);line-height:1.7;max-width:560px}
+.tech-strip{display:flex;flex-wrap:wrap;align-items:center;gap:8px;padding:20px 36px;border-bottom:1px solid var(--rule);background:var(--bg2)}
+.tech-pre{font-family:var(--mono);font-size:10px;letter-spacing:.12em;text-transform:uppercase;color:var(--muted);margin-right:4px}
+.t-chip{font-family:var(--mono);font-size:11px;padding:4px 9px;border-radius:5px;background:var(--bg);border:1px solid var(--rule);color:var(--ink2);transition:all .2s;cursor:default}
+.t-chip:hover{background:var(--blue-dim);border-color:rgba(0,102,255,.25);color:var(--blue)}
+.t-chip.soft{border-style:dashed;color:var(--muted)}
+.t-chip.soft:hover{background:var(--blue-dim);color:var(--blue);border-style:solid}
+.check-box{display:grid;grid-template-columns:1fr 1fr;gap:0;padding:8px 36px 24px;border-bottom:1px solid var(--rule)}
+@media(max-width:560px){.check-box{grid-template-columns:1fr}}
+.check-item{display:flex;align-items:flex-start;gap:10px;font-size:14px;color:var(--body);padding:10px 0}
+.check-item::before{content:'✓';color:var(--green);font-weight:700;font-size:13px;flex-shrink:0;margin-top:2px}
+.process-grid{display:grid;grid-template-columns:repeat(4,1fr)}
+@media(max-width:640px){.process-grid{grid-template-columns:1fr 1fr}}
+.proc-step{padding:24px 22px;border-right:1px solid var(--rule)}
+.proc-step:last-child{border-right:none}
+.proc-n{font-family:var(--mono);font-size:11px;font-weight:600;color:var(--blue);letter-spacing:.06em;margin-bottom:8px}
+.proc-step h4{font-size:13px;font-weight:700;color:var(--ink);margin-bottom:5px}
+.proc-step p{font-size:12px;color:var(--body);line-height:1.6}
+.cred-foot{padding:14px 36px;background:var(--bg2);font-family:var(--mono);font-size:11px;color:var(--muted);letter-spacing:.04em}
 
-        .risk-card::before {
-            content: '';
-            position: absolute;
-            top: 0; left: 0; width: 4px; height: 100%;
-            background: #ef4444; 
-            opacity: 0;
-            transition: opacity 0.3s;
-        }
-        .risk-card:hover::before { opacity: 1; }
+/* IDENTITY */
+.identity-grid{display:grid;grid-template-columns:1fr 280px;gap:60px;align-items:start}
+@media(max-width:720px){.identity-grid{grid-template-columns:1fr}.id-card{display:none}}
+.identity-quote{font-size:18px;font-style:italic;font-weight:500;color:var(--ink);line-height:1.7;border-left:3px solid var(--blue);padding-left:20px;margin-bottom:22px}
+.identity-p{font-size:15px;color:var(--body);line-height:1.8;margin-bottom:18px}
+.identity-p strong{color:var(--ink);font-weight:600}
+.id-card{border:1.5px solid var(--rule);border-radius:12px;overflow:hidden;box-shadow:0 2px 20px rgba(0,0,0,.06)}
+.id-avatar{height:160px;background:linear-gradient(135deg,var(--blue) 0%,#6d28d9 100%);display:flex;align-items:center;justify-content:center;font-family:var(--mono);font-size:52px;font-weight:700;color:rgba(255,255,255,.85);letter-spacing:.05em;user-select:none}
+.id-details{padding:18px;background:var(--bg)}
+.id-name{font-size:14px;font-weight:700;color:var(--ink);margin-bottom:3px}
+.id-role{font-family:var(--mono);font-size:11px;color:var(--muted);margin-bottom:14px;letter-spacing:.04em}
+.id-row{display:flex;justify-content:space-between;align-items:center;padding:8px 0;border-top:1px solid var(--rule);font-size:12px}
+.id-row-k{color:var(--body)}
+.id-row-v{font-family:var(--mono);font-size:11px;font-weight:600;color:var(--blue)}
+.id-row-v.g{color:var(--green)}
 
-        .risk-icon-box {
-            flex-shrink: 0;
-            width: 50px; height: 50px;
-            border-radius: 10px;
-            display: flex; align-items: center; justify-content: center;
-            background: #f1f5f9;
-            color: #64748b;
-        }
+/* PRICING */
+.pricing-grid{display:grid;grid-template-columns:repeat(3,1fr);gap:16px}
+@media(max-width:700px){.pricing-grid{grid-template-columns:1fr}}
+.price-card{border:1.5px solid var(--rule);border-radius:12px;padding:30px 24px;background:var(--bg);display:flex;flex-direction:column;transition:all .25s}
+.price-card:hover{border-color:var(--blue);box-shadow:0 8px 28px rgba(0,102,255,.1)}
+.price-card.star{border-color:var(--blue);background:linear-gradient(160deg,#f0f6ff 0%,var(--bg) 60%);box-shadow:0 4px 24px rgba(0,102,255,.12)}
+.price-badge{font-family:var(--mono);font-size:10px;font-weight:600;letter-spacing:.14em;text-transform:uppercase;color:var(--blue);margin-bottom:14px}
+.price-badge.rec{color:var(--green)}
+.price-card h3{font-size:17px;font-weight:800;color:var(--ink);margin-bottom:8px;letter-spacing:-.01em}
+.price-card>p{font-size:13px;color:var(--body);line-height:1.7;margin-bottom:20px}
+.price-list{list-style:none;margin-bottom:28px;flex:1}
+.price-list li{font-size:13px;color:var(--body);padding:8px 0;border-bottom:1px solid var(--rule);display:flex;align-items:flex-start;gap:8px}
+.price-list li:last-child{border-bottom:none}
+.price-list li::before{content:'→';color:var(--blue);font-size:12px;flex-shrink:0;margin-top:1px}
+.price-list li strong{color:var(--ink)}
+.price-btn{display:block;text-align:center;padding:12px;border-radius:7px;font-family:var(--sans);font-size:13px;font-weight:700;transition:all .2s;letter-spacing:-.01em}
+.price-btn-blue{background:var(--blue);color:#fff}
+.price-btn-blue:hover{background:#004ecc;box-shadow:0 6px 20px rgba(0,102,255,.3)}
+.price-btn-outline{border:1.5px solid var(--rule);color:var(--ink2)}
+.price-btn-outline:hover{border-color:var(--blue);color:var(--blue);background:var(--blue-dim)}
+.secure{text-align:center;margin-top:28px;font-family:var(--mono);font-size:11px;color:var(--muted);letter-spacing:.06em}
 
-        .risk-icon-box.critical { background: #fef2f2; color: #ef4444; }
-        .risk-icon-box.warn { background: #fff7ed; color: #f97316; }
+/* FOOTER */
+.footer{border-top:1px solid var(--rule);padding:28px 0;background:var(--bg2)}
+.footer-inner{display:flex;align-items:center;justify-content:space-between;flex-wrap:wrap;gap:14px}
+.footer-copy{font-size:13px;color:var(--muted)}
+.footer-links{display:flex;gap:20px}
+.footer-links a{font-size:13px;color:var(--muted);transition:color .2s}
+.footer-links a:hover{color:var(--blue)}
 
-        .risk-content h3 { font-size: 1.25rem; margin-bottom: 10px; color: var(--navy-900); }
-        .risk-content p { font-size: 0.95rem; color: var(--slate-600); margin-bottom: 15px; line-height: 1.5; }
-
-        .risk-tag {
-            display: inline-block;
-            font-size: 0.75rem;
-            font-weight: 700;
-            text-transform: uppercase;
-            letter-spacing: 0.5px;
-            color: #94a3b8;
-            border: 1px solid #e2e8f0;
-            padding: 4px 8px;
-            border-radius: 4px;
-        }
-
-        /* --- BENTO GRID STYLES --- */
-        .deliverables-section { background-color: var(--slate-100); }
-        
-        .bento-grid {
-            display: grid;
-            grid-template-columns: repeat(3, 1fr);
-            grid-template-rows: auto auto;
-            gap: 24px;
-            max-width: 1100px;
-            margin: 0 auto;
-        }
-
-        .bento-card {
-            background: var(--white);
-            border: 1px solid var(--border);
-            border-radius: 12px;
-            padding: 32px;
-            position: relative;
-            overflow: hidden;
-            transition: all 0.3s cubic-bezier(0.25, 0.8, 0.25, 1);
-            display: flex;
-            flex-direction: column;
-            justify-content: flex-start;
-            box-shadow: var(--shadow);
-        }
-
-        .bento-card:hover {
-            transform: translateY(-5px);
-            border-color: var(--primary);
-            box-shadow: 0 15px 30px rgba(0,0,0,0.1);
-        }
-
-        .bento-card h3 { font-size: 1.25rem; margin: 15px 0 10px; color: var(--navy-900); transition: color 0.3s; }
-        .bento-card:hover h3 { color: var(--primary); }
-        .bento-card p { font-size: 0.95rem; color: var(--slate-600); margin-bottom: 0; line-height: 1.6; }
-
-        .hero-card {
-            grid-column: span 2;
-            background: linear-gradient(135deg, #ffffff 0%, #f8fafc 100%);
-            display: flex;
-            justify-content: center;
-        }
-
-        .bento-icon-bg {
-            position: absolute; top: -10px; right: -10px; font-size: 8rem;
-            opacity: 0.05; font-weight: 900; color: var(--navy-900); user-select: none;
-        }
-
-        .mini-stat { margin-top: 20px; display: flex; gap: 15px; font-size: 0.85rem; font-weight: 700; }
-        .trend-up { color: #16a34a; background: #dcfce7; padding: 4px 8px; border-radius: 4px; }
-        .trend-down { color: #2563eb; background: #dbeafe; padding: 4px 8px; border-radius: 4px; }
-
-        .icon-box {
-            width: 48px; height: 48px; background: var(--slate-100); border-radius: 8px;
-            display: flex; align-items: center; justify-content: center; font-size: 1.5rem;
-            transition: background 0.3s, color 0.3s;
-        }
-        .bento-card:hover .icon-box { background: var(--primary); color: white; }
-
-        /* --- CREDIBILITY & CTA STYLES --- */
-        .credibility-section { background-color: var(--white); }
-        .credibility-box {
-            max-width: 900px; margin: 0 auto; background: var(--white);
-            border: 1px solid var(--border); border-top: 4px solid var(--primary);
-            padding: 50px; border-radius: var(--radius); box-shadow: var(--shadow); text-align: left;
-        }
-
-        .check-list { display: grid; grid-template-columns: 1fr 1fr; gap: 16px 32px; margin-top: 20px; margin-bottom: 40px; }
-        .check-list li { display: flex; align-items: flex-start; gap: 12px; font-weight: 500; color: var(--navy-900); }
-        .check-icon { color: var(--primary); font-weight: 800; }
-
-        .process-divider { border-top: 1px solid var(--slate-100); margin: 30px 0; padding-top: 30px; }
-        .process-grid { display: flex; flex-wrap: wrap; gap: 20px; margin-top: 20px; }
-        .process-step { flex: 1; min-width: 160px; }
-        .process-step strong { color: var(--primary); display: block; margin-bottom: 8px; font-size: 1.1rem; }
-        .process-step p { font-size: 0.9rem; margin-bottom: 0; line-height: 1.5; }
-
-        .tech-stack { 
-            margin-bottom: 30px; padding-bottom: 20px; border-bottom: 1px solid var(--slate-100);
-            color: var(--slate-600); font-size: 0.95rem; display: flex; align-items: flex-start; gap: 12px; flex-wrap: wrap;
-        }
-        .tech-badge {
-            background: var(--slate-100); padding: 4px 10px; border-radius: 4px;
-            font-weight: 600; color: var(--navy-900); margin: 0 4px; font-size: 0.85rem;
-        }
-
-        /* --- NEW ANIMATIONS & INTERACTIONS --- */
-        /* 1. Tech Badge Hover Effect */
-        .tech-badge {
-            transition: all 0.2s ease;
-            cursor: default;
-            border: 1px solid transparent;
-        }
-        .tech-badge:hover {
-            background-color: #e0f2fe; /* Light Blue */
-            color: var(--primary);
-            border-color: #bae6fd;
-            transform: translateY(-1px);
-        }
-        
-        /* Special style for eBPF to make it pop */
-        .tech-badge.highlight {
-            background-color: #f0fdf4; /* Light Green */
-            color: #15803d;
-            border: 1px solid #bbf7d0;
-        }
-
-        /* 2. Checkmark Pulse Animation */
-        .check-icon.pulse {
-            animation: softPulse 2s infinite;
-        }
-
-        @keyframes softPulse {
-            0% { transform: scale(1); opacity: 1; }
-            50% { transform: scale(1.2); opacity: 0.8; }
-            100% { transform: scale(1); opacity: 1; }
-        }
-
-        /* 3. Box Hover Glow */
-        .credibility-box {
-            transition: border-color 0.3s, box-shadow 0.3s;
-        }
-        .credibility-box:hover {
-            border-color: #cbd5e1;
-            box-shadow: 0 20px 25px -5px rgba(0, 0, 0, 0.1), 0 10px 10px -5px rgba(0, 0, 0, 0.04);
-        }
-
-        .cta-section { background-color: var(--navy-900); color: var(--white); padding: 100px 0; }
-        .cta-section h2 { color: var(--white); }
-        .cta-section p { color: #cbd5e1; }
-
-        .engagement-grid { display: grid; grid-template-columns: repeat(auto-fit, minmax(300px, 1fr)); gap: 24px; max-width: 1080px; margin: 0 auto; }
-        .engagement-card {
-            background: rgba(255, 255, 255, 0.03); border: 1px solid rgba(255, 255, 255, 0.1);
-            padding: 32px; border-radius: var(--radius); display: flex; flex-direction: column;
-            text-align: left; transition: 0.3s;
-        }
-        .engagement-card:hover { background: rgba(255, 255, 255, 0.08); transform: translateY(-4px); }
-        
-        .engagement-card.featured { background: var(--white); border-color: var(--white); }
-        .engagement-card.featured h3 { color: var(--navy-900); }
-        .engagement-card.featured p { color: var(--slate-600); }
-        .engagement-card.featured li { color: var(--slate-600); border-color: #e2e8f0; }
-
-        .engagement-card h3 { font-size: 1.25rem; color: var(--white); margin-bottom: 12px; }
-        .engagement-card p { font-size: 0.95rem; color: #94a3b8; margin-bottom: 16px; }
-
-        .card-deliverables { margin-bottom: 24px; list-style: none; }
-        .card-deliverables li {
-            font-size: 0.9rem; padding: 8px 0; border-bottom: 1px solid rgba(255,255,255,0.1);
-            color: #cbd5e1; display: flex; align-items: center; gap: 8px;
-        }
-        .card-deliverables li::before { content: "•"; color: var(--primary); }
-        
-        .btn-grid { width: 100%; text-align: center; padding: 12px; border-radius: 6px; font-weight: 600; transition: 0.2s; margin-top: auto; }
-        .btn-grid-outline { border: 1px solid rgba(255,255,255,0.3); color: var(--white); }
-        .btn-grid-outline:hover { border-color: var(--white); background: rgba(255,255,255,0.1); }
-        .btn-grid-primary { background: var(--primary); color: var(--white); }
-        .btn-grid-primary:hover { background: var(--primary-hover); }
-
-        footer { text-align: center; padding: 40px 0; border-top: 1px solid #1e293b; background-color: var(--navy-900); color: #64748b; font-size: 0.9rem; }
-
-        @media (max-width: 900px) {
-            .bento-grid { grid-template-columns: 1fr; }
-            .hero-card { grid-column: span 1; }
-            .diagnostic-grid { grid-template-columns: 1fr; }
-            .risk-card { flex-direction: column; }
-            .hero h1 { font-size: 2.75rem; }
-        }
-    </style>
+/* FADE */
+.fade{opacity:0;transform:translateY(18px);animation:fadeUp .7s ease forwards}
+.fade.d1{animation-delay:.1s}.fade.d2{animation-delay:.2s}.fade.d3{animation-delay:.3s}.fade.d4{animation-delay:.4s}.fade.d5{animation-delay:.5s}
+@keyframes fadeUp{to{opacity:1;transform:translateY(0)}}
+</style>
 </head>
 <body>
 
-    <header class="hero">
-        <div class="container text-center">
-            
-            <div class="hero-badge">
-                <span class="pulse-status"></span> AVAILABLE FOR INDEPENDENT AUDITS
-            </div>
+<header class="nav">
+  <div class="nav-inner">
+    <div class="nav-brand">AP<b>.</b>PERFENG</div>
+    <ul class="nav-links">
+      <li><a href="#problems">Problems</a></li>
+      <li><a href="#process">Process</a></li>
+      <li><a href="#about">About</a></li>
+      <li><a href="case-studies.html">Case Studies</a></li>
+      <li><a href="#contact" class="nav-pill">Work Together</a></li>
+    </ul>
+  </div>
+</header>
 
-            <h1>Performance & Scalability Engineering</h1>
-            
-            <p class="hero-lead">
-                On-demand performance and scalability engineering for SaaS, enterprise, and hybrid production systems.
-            </p>
-
-            <div class="trust-bar">
-                <span class="trust-text">Delivered end-to-end optimization (Application to Kernel) at:</span>
-                <div class="logo-group">
-                    <span class="company-name">IBM</span>
-                    <span class="separator">/</span>
-                    <span class="company-name">Ex-OpenText</span>
-                </div>
-            </div>
-            
-            <div class="hero-actions">
-                <a href="#contact" class="btn btn-primary">Request Architecture Review</a>
-                <a href="#simulation" class="btn btn-text">View Engineering Case Studies →</a>
-            </div>
-
+<section class="hero">
+  <div class="wrap">
+    <div class="hero-grid">
+      <div>
+        <div class="avail-tag fade d1"><span class="avail-dot"></span>Available for engagements</div>
+        <h1 class="hero-h1 fade d2">Your system is slow.<br>I'll tell you <span class="accent">exactly why.</span></h1>
+        <p class="hero-lead fade d3">On-demand performance engineering across the full stack — <strong>JVM internals, Kubernetes pods, PostgreSQL query plans, Linux kernel.</strong> I fix root causes. Not symptoms.</p>
+        <div class="hero-ctas fade d4">
+          <a href="#contact" class="btn btn-blue">→ Start an Audit</a>
+          <a href="case-studies.html" class="btn btn-ghost">View Case Studies</a>
         </div>
-    </header>
-
-    <section id="simulation" style="background-color: #0d1117; padding: 80px 0; border-bottom: 1px solid #30363d;">
-        <div class="container">
-            <div class="section-header">
-                <h2 style="color: #fff;">The Impact of Hidden Latency</h2>
-            </div>
-
-            <div id="engine-container" class="impact-engine-container state-critical">
-                <div class="engine-header">
-                    <div id="company-display" class="company-name">LOADING...</div>
-                    <div id="desc-display" class="scenario-desc">Initializing case study data...</div>
-                </div>
-        
-                <div class="dashboard-grid">
-                    <div class="metric-card latency">
-                        <div class="metric-label">App Latency</div>
-                        <div class="metric-value" id="val-latency">--</div>
-                    </div>
-                    <div class="metric-card cost">
-                        <div class="metric-label">Infra Cost</div>
-                        <div class="metric-value" id="val-cost">--</div>
-                    </div>
-                    <div class="metric-card revenue">
-                        <div class="metric-label">Revenue / Growth</div>
-                        <div class="metric-value" id="val-revenue">--</div>
-                    </div>
-                </div>
-        
-                <div id="progress" class="progress-line"></div>
-                <div id="status-label" class="status-text">System Unoptimized</div>
-            </div>
+      </div>
+      <div class="hero-sidebar fade d5">
+        <div class="result-card">
+          <div class="rc-head"><span class="rc-head-label">Recent Results</span><span class="rc-live">Verified</span></div>
+          <div class="rc-row"><span class="rc-key">Transaction latency</span><span class="rc-val g">↓ 80%</span></div>
+          <div class="rc-row"><span class="rc-key">System throughput</span><span class="rc-val g">↑ 50%</span></div>
+          <div class="rc-row"><span class="rc-key">Infra cost avoided</span><span class="rc-val b">Scale-up cancelled</span></div>
+          <div class="rc-row"><span class="rc-key">Uptime certified</span><span class="rc-val a">99.9%</span></div>
+          <div class="rc-row"><span class="rc-key">Production disruption</span><span class="rc-val g">Zero</span></div>
         </div>
-    </section>
+      </div>
+    </div>
+  </div>
+</section>
 
-    <section class="section-padding problem-section">
-        <div class="container">
-            <div class="section-header">
-                <h2>Growth doesn’t break systems — unknown limits do</h2>
-                <p>As usage grows, many systems appear stable until a threshold is crossed. At that point, failures surface quickly and expensively.</p>
-            </div>
-            
-            <div class="diagnostic-grid">
-                
-                <div class="risk-card">
-                    <div class="risk-icon-box warn">
-                        <svg width="24" height="24" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round"><circle cx="12" cy="12" r="10"></circle><polyline points="12 6 12 12 16 14"></polyline></svg>
-                    </div>
-                    <div class="risk-content">
-                        <h3>Latency Creep</h3>
-                        <p>Response times degrade gradually. Without baselines, you won't notice until "slow" becomes "unacceptable" and users churn.</p>
-                        <div class="risk-tag">Performance</div>
-                    </div>
-                </div>
-    
-                <div class="risk-card">
-                    <div class="risk-icon-box critical">
-                        <svg width="24" height="24" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round"><rect x="3" y="3" width="18" height="18" rx="2" ry="2"></rect><line x1="3" y1="9" x2="21" y2="9"></line><line x1="9" y1="21" x2="9" y2="9"></line></svg>
-                    </div>
-                    <div class="risk-content">
-                        <h3>Database Locking</h3>
-                        <p>Horizontal app scaling often collides with DB connection limits and write contention, causing sudden, total system lockups.</p>
-                        <div class="risk-tag">Architecture</div>
-                    </div>
-                </div>
-    
-                <div class="risk-card">
-                    <div class="risk-icon-box warn">
-                        <svg width="24" height="24" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round"><path d="M10.29 3.86L1.82 18a2 2 0 0 0 1.71 3h16.94a2 2 0 0 0 1.71-3L13.71 3.86a2 2 0 0 0-3.42 0z"></path><line x1="12" y1="9" x2="12" y2="13"></line><line x1="12" y1="17" x2="12.01" y2="17"></line></svg>
-                    </div>
-                    <div class="risk-content">
-                        <h3>The "Staging" Trap</h3>
-                        <p>Staging environments rarely match production data volume. You are deploying code that has never been tested under real pressure.</p>
-                        <div class="risk-tag">Process</div>
-                    </div>
-                </div>
-    
-                <div class="risk-card">
-                    <div class="risk-icon-box critical">
-                        <svg width="24" height="24" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round"><line x1="12" y1="1" x2="12" y2="23"></line><path d="M17 5H9.5a3.5 3.5 0 0 0 0 7h5a3.5 3.5 0 0 1 0 7H6"></path></svg>
-                    </div>
-                    <div class="risk-content">
-                        <h3>Cloud Cost Waste</h3>
-                        <p>Throwing larger instances at performance problems is a temporary band-aid that kills margins and hides the root cause.</p>
-                        <div class="risk-tag">Financial</div>
-                    </div>
-                </div>
-    
-            </div>
-    
+<div class="trust">
+  <div class="trust-inner">
+    <span class="trust-label">End-to-end optimization delivered at</span>
+    <div class="trust-logos">
+      <span class="trust-co">IBM</span><span class="trust-div">/</span><span class="trust-co">OpenText</span>
+    </div>
+  </div>
+</div>
+
+<div class="ticker">
+  <div class="ticker-track">
+    <div class="ticker-item"><span></span>KVM Hypervisor Optimization</div>
+    <div class="ticker-item"><span></span>JVM Thread &amp; Mutex Analysis</div>
+    <div class="ticker-item"><span></span>PostgreSQL Query Tuning</div>
+    <div class="ticker-item"><span></span>Linux Kernel Tuning</div>
+    <div class="ticker-item"><span></span>Kubernetes Pod Performance</div>
+    <div class="ticker-item"><span></span>Java Heap &amp; GC Profiling</div>
+    <div class="ticker-item"><span></span>Root Cause Analysis</div>
+    <div class="ticker-item"><span></span>NUMA Topology Alignment</div>
+    <div class="ticker-item"><span></span>API Latency Profiling</div>
+    <div class="ticker-item"><span></span>Connection Pool Optimization</div>
+    <div class="ticker-item"><span></span>KVM Hypervisor Optimization</div>
+    <div class="ticker-item"><span></span>JVM Thread &amp; Mutex Analysis</div>
+    <div class="ticker-item"><span></span>PostgreSQL Query Tuning</div>
+    <div class="ticker-item"><span></span>Linux Kernel Tuning</div>
+    <div class="ticker-item"><span></span>Kubernetes Pod Performance</div>
+    <div class="ticker-item"><span></span>Java Heap &amp; GC Profiling</div>
+    <div class="ticker-item"><span></span>Root Cause Analysis</div>
+    <div class="ticker-item"><span></span>NUMA Topology Alignment</div>
+    <div class="ticker-item"><span></span>API Latency Profiling</div>
+    <div class="ticker-item"><span></span>Connection Pool Optimization</div>
+  </div>
+</div>
+
+<section class="section section-alt">
+  <div class="wrap">
+    <div class="eyebrow">The cost of doing nothing</div>
+    <h2 class="section-h2">Hidden latency kills growth.</h2>
+    <p class="section-sub">Real scenarios showing what happens before — and after — root cause is found and fixed.</p>
+    <div class="widget-wrap">
+      <div class="widget-topbar">
+        <div class="wt-left"><div class="wt-dot"></div><div class="wt-dot"></div><div class="wt-dot"></div></div>
+        <span class="wt-title">Case Study Simulation</span>
+        <span class="wt-company" id="wt-co">LOADING...</span>
+      </div>
+      <div class="widget-metrics">
+        <div class="wm-cell" id="mc-lat"><div class="wm-label">App Latency</div><div class="wm-val" id="mv-lat">—</div></div>
+        <div class="wm-cell" id="mc-cost"><div class="wm-label">Infra Cost</div><div class="wm-val" id="mv-cost">—</div></div>
+        <div class="wm-cell" id="mc-rev"><div class="wm-label">Revenue / Growth</div><div class="wm-val" id="mv-rev">—</div></div>
+      </div>
+      <div class="widget-footer">
+        <div class="wf-bar"><div class="wf-fill" id="wf-fill"></div></div>
+        <div class="wf-status" id="wf-status">⚠ Detecting bottleneck</div>
+      </div>
+    </div>
+  </div>
+</section>
+
+<section class="section" id="problems">
+  <div class="wrap">
+    <div class="eyebrow">Why systems fail under growth</div>
+    <h2 class="section-h2">Systems look stable — until they don't.</h2>
+    <p class="section-sub">Failures don't announce themselves in advance. They surface at the worst possible time, with the highest possible cost.</p>
+    <div class="prb-grid">
+      <div class="prb-card"><div class="prb-icon">⏱</div><h3>Latency Creep</h3><p>Response times degrade gradually. Without proper baselines, you won't notice until "slow" becomes "unacceptable" and users start leaving.</p><span class="prb-tag">Performance</span></div>
+      <div class="prb-card"><div class="prb-icon">🔒</div><h3>Database Locking</h3><p>Horizontal app scaling collides with DB connection limits and write contention, causing sudden and total system lockups under load.</p><span class="prb-tag">Architecture</span></div>
+      <div class="prb-card"><div class="prb-icon">⚠️</div><h3>The Staging Trap</h3><p>Staging environments rarely match production data volume. You are deploying code that has never been tested under real pressure.</p><span class="prb-tag">Process</span></div>
+      <div class="prb-card"><div class="prb-icon">💸</div><h3>Cloud Cost Waste</h3><p>Throwing larger instances at performance problems is a band-aid that kills margins and permanently hides the root cause.</p><span class="prb-tag">Financial</span></div>
+    </div>
+  </div>
+</section>
+
+<section class="section section-alt">
+  <div class="wrap">
+    <div class="eyebrow">Business outcomes</div>
+    <h2 class="section-h2">Engineering that moves numbers.</h2>
+    <p class="section-sub">Performance work isn't housekeeping. It directly affects margins, SLAs, and growth capacity.</p>
+    <div class="bento">
+      <div class="bento-card wide"><div><div class="bento-num">01</div><h3>Margin &amp; Cost Efficiency</h3><p>Directly improve gross margins by rightsizing infrastructure. Turn cloud waste into reinvestable capital without compromising reliability.</p><div class="chip-row"><span class="chip up">▲ Margin +15%</span><span class="chip down">▼ Waste −30%</span></div></div></div>
+      <div class="bento-card"><div class="bento-num">02</div><h3>SLA Protection</h3><p>Identify bottlenecks before they breach contracts or churn customers. Proactive, not reactive.</p></div>
+      <div class="bento-card"><div class="bento-num">03</div><h3>Predictable Scaling</h3><p>Decouple user growth from cost growth. Scale 10× without your cloud bill going 10×.</p></div>
+      <div class="bento-card"><div class="bento-num">04</div><h3>Faster Recovery</h3><p>Deep architectural visibility means faster root-cause diagnosis when production incidents occur.</p></div>
+      <div class="bento-card"><div class="bento-num">05</div><h3>Executive Clarity</h3><p>Data-driven trade-offs. Know exactly how much faster you get for how much spent — Jira-ready.</p></div>
+    </div>
+  </div>
+</section>
+
+<section class="section" id="process">
+  <div class="wrap">
+    <div class="eyebrow">How I work</div>
+    <h2 class="section-h2">Root cause or nothing.</h2>
+    <p class="section-sub">I don't surface metrics you already have. I find the layer where the actual problem lives and fix it there.</p>
+    <div class="cred-box">
+      <div class="cred-head">
+        <h3>Expert System Performance Analysis &amp; Optimization</h3>
+        <p>Identifying and fixing bottlenecks across application, database, and infrastructure layers in production systems. The tools support the analysis — they do not define it.</p>
+      </div>
+      <div class="tech-strip">
+        <span class="tech-pre">Core stack</span>
+        <span class="t-chip">Java / C++</span>
+        <span class="t-chip">JVM Internals</span>
+        <span class="t-chip">Linux Kernel</span>
+        <span class="t-chip">KVM / Hypervisors</span>
+        <span class="t-chip">PostgreSQL</span>
+        <span class="t-chip">Kubernetes</span>
+        <span class="t-chip">Distributed Tracing</span>
+        <span class="t-chip soft">eBPF / XDP *</span>
+      </div>
+      <div class="check-box">
+        <div class="check-item">System behaviour under load</div>
+        <div class="check-item">Linux and runtime-level performance</div>
+        <div class="check-item">Database and infrastructure interaction</div>
+        <div class="check-item">Root-cause analysis beyond surface metrics</div>
+      </div>
+      <div class="process-grid">
+        <div class="proc-step"><div class="proc-n">01 · Discovery</div><h4>Architecture Review</h4><p>Read-only access to monitoring logs and architecture docs. No production access required.</p></div>
+        <div class="proc-step"><div class="proc-n">02 · Analysis</div><h4>Bottleneck Identification</h4><p>Root causes in code, query plans, kernel config, and runtime — not just the dashboard.</p></div>
+        <div class="proc-step"><div class="proc-n">03 · Validation</div><h4>Load Test Verification</h4><p>Non-production load tests confirm findings before any changes touch production.</p></div>
+        <div class="proc-step"><div class="proc-n">04 · Roadmap</div><h4>Jira-Ready Output</h4><p>Prioritised, actionable fix list your team can start executing the same day.</p></div>
+      </div>
+      <div class="cred-foot">* eBPF/XDP — working familiarity, not production depth &nbsp;·&nbsp; 🔒 All work conducted securely and remotely</div>
+    </div>
+  </div>
+</section>
+
+<section class="section section-alt" id="about">
+  <div class="wrap">
+    <div class="eyebrow">Who I am</div>
+    <h2 class="section-h2">The engineer behind the work.</h2>
+    <div class="identity-grid">
+      <div>
+        <div class="identity-quote">"Dashboards show you the <em>what</em>. I work at the layer that explains the <em>why</em> — from the Kubernetes pod down to the kernel. That's where the real problems live."</div>
+        <p class="identity-p">I'm <strong>Anshika Pundeel</strong>, a performance engineer currently at IBM where I tune KVM on zServer mainframes — environments where a single kernel misconfiguration cascades across thousands of VMs. Before that at OpenText, I profiled and fixed Java applications running on Kubernetes in GCP — thread contention, mutex deadlocks, connection pool exhaustion, unaudited PostgreSQL query plans.</p>
+        <p class="identity-p"><strong>Most performance problems are misdiagnosed because engineers stop at the wrong layer.</strong> The application dashboard looks fine. The root cause is in the JVM scheduler, the NUMA topology, or a query plan nobody checked in two years. That's where I start.</p>
+        <a href="https://www.linkedin.com/in/anshika-pundeel/" target="_blank" class="btn btn-ghost" style="margin-top:8px;display:inline-flex;">→ LinkedIn Profile</a>
+      </div>
+      <div class="id-card">
+        <div class="id-avatar">AP</div>
+        <div class="id-details">
+          <div class="id-name">Anshika Pundeel</div>
+          <div class="id-role">Performance Engineer</div>
+          <div class="id-row"><span class="id-row-k">Current</span><span class="id-row-v">IBM · KVM / zServer</span></div>
+          <div class="id-row"><span class="id-row-k">Previous</span><span class="id-row-v">OpenText · Java / K8s</span></div>
+          <div class="id-row"><span class="id-row-k">Location</span><span class="id-row-v">Bangalore · Remote</span></div>
+          <div class="id-row"><span class="id-row-k">Status</span><span class="id-row-v g">Available</span></div>
         </div>
-    </section>
-    
-    <section class="section-padding deliverables-section">
-        <div class="container">
-            <div class="section-header">
-                <h2>Business Impact Architecture</h2>
-                <p>Strategic outcomes delivered through engineering precision.</p>
-            </div>
-            
-            <div class="bento-grid">
-                
-                <div class="bento-card hero-card">
-                    <div class="bento-content">
-                        <div class="bento-icon-bg">$$$</div>
-                        <h3>1. Margin & Cost Efficiency</h3>
-                        <p>Directly improve gross margins by rightsizing infrastructure. Turn "cloud waste" into reinvestable capital without compromising reliability.</p>
-                        <div class="mini-stat">
-                            <span class="trend-up">▲ Margin +15%</span>
-                            <span class="trend-down">▼ Waste -30%</span>
-                        </div>
-                    </div>
-                </div>
-    
-                <div class="bento-card">
-                    <div class="icon-box">🛡</div>
-                    <h3>2. SLA Protection</h3>
-                    <p>Proactive latency defense. Identify bottlenecks before they breach contracts or churn customers.</p>
-                </div>
-    
-                <div class="bento-card">
-                    <div class="icon-box">📈</div>
-                    <h3>3. Predictable Scaling</h3>
-                    <p>Decouple user growth from cost growth. Scale 10x without your AWS bill going 10x.</p>
-                </div>
-    
-                <div class="bento-card">
-                    <div class="icon-box">⚡</div>
-                    <h3>4. Operational Risk</h3>
-                    <p>Reduce Mean Time To Recovery (MTTR) with deep architectural visibility.</p>
-                </div>
-    
-                <div class="bento-card">
-                    <div class="icon-box">🧠</div>
-                    <h3>5. Executive Support</h3>
-                    <p>Data-driven trade-offs. Know exactly "how much faster" you get for "how much spent."</p>
-                </div>
-    
-            </div>
-        </div>
-    </section>
+      </div>
+    </div>
+  </div>
+</section>
 
-    <section class="section-padding credibility-section">
-        <div class="container">
-            <div class="credibility-box">
-                <h3 style="font-size: 1.5rem; margin-bottom: 20px;">Expert System Performance Analysis & Optimization</h3>
-                <p class="core-focus-summary">
-                    Identifying and fixing performance bottlenecks across application, database, and infrastructure layers in production systems.
-                </p>                  
-                
-                <div class="tech-stack">
-                    <span style="font-size: 0.85rem; font-weight: 600; color: #64748b; margin-right: 8px;">Core Focus:</span>
-                    
-                    <!-- <span class="tech-badge">Java, C++ & Go</span>
-                    <span class="tech-badge">Rust Runtimes</span>
-                    <span class="tech-badge highlight">eBPF / XDP</span>
-                    <span class="tech-badge">Linux Kernel</span>
-                    <span class="tech-badge">KVM & Hypervisors</span>
-                    <span class="tech-badge">Distributed Tracing</span>
-                    <span class="tech-badge">Kubernetes</span>
-                    <span class="tech-badge">DB Internals</span> -->
-                    <span class="tech-badge">PostgreSQL Internals</span>
-                    <span class="tech-badge">Linux System Tuning</span>
-                    <span class="tech-badge">Java Backend Systems</span>
-                    <span class="tech-badge">API Optimization</span>
-                    <span class="tech-badge">Infrastructure Tuning</span>
-                    <span class="tech-badge">LoadRunner / Testing</span>
-                    <span class="tech-badge">Root Cause Analysis</span>
-                    <span class="tech-badge">Kubernetes & C++</span>
-                    
-                </div>
-                
-                <ul class="check-list">
-                    <li><span class="check-icon pulse">✓</span> System behavior under load</li>
-                    <li><span class="check-icon pulse">✓</span> Linux and runtime-level performance</li>
-                    <li><span class="check-icon pulse">✓</span> Database and infrastructure interaction</li>
-                    <li><span class="check-icon pulse">✓</span> Root-cause analysis beyond surface metrics</li>
-                </ul>
+<section class="section" id="contact">
+  <div class="wrap">
+    <div class="eyebrow">Engagements</div>
+    <h2 class="section-h2">Validate before growth exposes risk.</h2>
+    <p class="section-sub">Choose the level that matches where your system is and what you need to know.</p>
+    <div class="pricing-grid">
+      <div class="price-card">
+        <div class="price-badge">Entry Point</div>
+        <h3>Quick Performance Review</h3>
+        <p>A focused review to surface visible risks and understand current performance quickly.</p>
+        <ul class="price-list">
+          <li>Initial Architecture Review</li>
+          <li>Visible Bottleneck Report</li>
+          <li>2-Hour Findings Call</li>
+        </ul>
+        <a href="mailto:anshikasatsangi2@gmail.com?subject=Quick Performance Check" class="price-btn price-btn-outline">Check Readiness →</a>
+      </div>
+      <div class="price-card star">
+        <div class="price-badge rec">Recommended</div>
+        <h3>Full Scalability Review</h3>
+        <p>Deep, engineering-led assessment of limits, risks, and SLA readiness. Most clients start here.</p>
+        <ul class="price-list">
+          <li><strong>Full Architecture Analysis</strong></li>
+          <li>Database &amp; Query Optimisation</li>
+          <li>Load Testing Validation</li>
+          <li>Jira-Ready Remediation Roadmap</li>
+        </ul>
+        <a href="mailto:anshikasatsangi2@gmail.com?subject=Full Scalability Review" class="price-btn price-btn-blue">Start Review →</a>
+      </div>
+      <div class="price-card">
+        <div class="price-badge">Advanced</div>
+        <h3>Custom Assessment</h3>
+        <p>For complex architectures, on-prem infra, mainframe environments, or regulatory constraints.</p>
+        <ul class="price-list">
+          <li>Multi-Region Availability</li>
+          <li>Custom Chaos Engineering</li>
+          <li>On-prem / Hybrid / KVM</li>
+          <li>Mainframe Environments</li>
+        </ul>
+        <a href="mailto:anshikasatsangi2@gmail.com?subject=Custom Assessment" class="price-btn price-btn-outline">Get in Touch →</a>
+      </div>
+    </div>
+    <p class="secure">🔒 All work conducted securely and remotely &nbsp;·&nbsp; No production disruption &nbsp;·&nbsp; Confidentiality maintained</p>
+  </div>
+</section>
 
-                <div class="process-divider">
-                    <h4 style="font-size: 1.1rem; margin-bottom: 15px;">The Non-Intrusive Assessment Process:</h4>
-                    <div class="process-grid">
-                        <div class="process-step">
-                            <strong>1. Discovery</strong>
-                            <p>Review of architecture & monitoring logs (Read-Only access).</p>
-                        </div>
-                        <div class="process-step">
-                            <strong>2. Analysis</strong>
-                            <p>Identifying bottlenecks in code, query plans, and config.</p>
-                        </div>
-                        <div class="process-step">
-                            <strong>3. Validation</strong>
-                            <p>Verification via non-production load tests (if required).</p>
-                        </div>
-                        <div class="process-step">
-                            <strong>4. Roadmap</strong>
-                            <p>Delivery of prioritized, Jira-ready remediation tasks.</p>
-                        </div>
-                    </div>
-                </div>
-                
-                <p style="margin-top: 30px; font-size: 0.9rem; color: #64748b; font-style: italic;">
-                    *Tools support the analysis — they do not define it.
-                </p>
-            </div>
-        </div>
-    </section>
+<footer class="footer">
+  <div class="wrap">
+    <div class="footer-inner">
+      <span class="footer-copy">© 2025 Anshika Pundeel · Performance Engineering</span>
+      <div class="footer-links">
+        <a href="https://www.linkedin.com/in/anshika-pundeel/" target="_blank">LinkedIn</a>
+        <a href="case-studies.html">Case Studies</a>
+        <a href="about.html">About</a>
+        <a href="mailto:anshikasatsangi2@gmail.com">Email</a>
+      </div>
+    </div>
+  </div>
+</footer>
 
-    <section class="cta-section" id="contact">
-        <div class="container">
-            <div class="section-header">
-                <h2>Validate Before Growth Exposes Risk</h2>
-                <p>Select the assessment level that matches your current engineering needs.</p>
-            </div>
-
-            <div class="engagement-grid">
-                <div class="engagement-card">
-                    <div>
-                        <h3>Quick Performance Review</h3>
-                        <p>A focused review to understand current system performance and visible risk areas.</p>
-                        <ul class="card-deliverables">
-                            <li>Initial Architecture Review</li>
-                            <li>Visible Bottleneck Report</li>
-                            <li>2-Hour Findings Call</li>
-                        </ul>
-                    </div>
-                    <a href="mailto:anshikasatsangi2@gmail.com?subject=Quick Performance Check" class="btn-grid btn-grid-outline">Check Readiness</a>
-                </div>
-
-                <div class="engagement-card featured">
-                    <div>
-                        <h3>Full Scalability Review</h3>
-                        <p>Detailed, engineering-led assessment of limits, risks, and SLA readiness.</p>
-                        <ul class="card-deliverables">
-                            <li><strong>Full Architecture Analysis</strong></li>
-                            <li>Database & Query Optimization</li>
-                            <li>Load Testing Validation</li>
-                            <li>Remediation Roadmap (Jira-ready)</li>
-                        </ul>
-                    </div>
-                    <a href="mailto:anshikasatsangi2@gmail.com?subject=Full Scalability Review" class="btn-grid btn-grid-primary">Start Review</a>
-                </div>
-
-                <div class="engagement-card">
-                    <div>
-                        <h3>Advanced Assessment</h3>
-                        <p>For systems with complex architectures or regulatory constraints.</p>
-                        <ul class="card-deliverables">
-                            <li>Multi-Region Availability</li>
-                            <li>Custom Chaos Engineering</li>
-                            <li>On-prem / Hybrid Support</li>
-                        </ul>
-                    </div>
-                    <a href="mailto:anshikasatsangi2@gmail.com?subject=Custom Assessment" class="btn-grid btn-grid-outline">Contact </a>
-                </div>
-            </div>
-
-            <p class="text-center" style="margin-top: 50px; opacity: 0.6; font-size: 0.9rem;">
-                🔒 All work conducted securely and remotely. No production disruption.
-            </p>
-        </div>
-    </section>
-
-    <footer>
-        <div class="container">
-            <p>Engineered by Anshika Pundeel | 
-                <a href="https://www.linkedin.com/in/anshika-pundeel/" target="_blank" rel="noopener noreferrer">
-                    LinkedIn
-            </a></p>
-        </div>
-    </footer>
-
-    <script>
-        const container = document.getElementById('engine-container');
-        const companyEl = document.getElementById('company-display');
-        const descEl = document.getElementById('desc-display');
-        const progressEl = document.getElementById('progress');
-        const statusEl = document.getElementById('status-label');
-
-        const valLat = document.getElementById('val-latency');
-        const valCost = document.getElementById('val-cost');
-        const valRev = document.getElementById('val-revenue');
-
-        // The Data: Before (Bad) vs After (Good)
-        // const cases = [
-        //     {
-        //         name: "AMAZON",
-        //         desc: "High latency was killing sales.",
-        //         before: { lat: "1.2s", cost: "$$$", rev: "Stagnant" },
-        //         after:  { lat: "100ms", cost: "Stable", rev: "+1% ($B)" }
-        //     },
-        //     {
-        //         name: "SEGMENT",
-        //         desc: "Microservices overhead burned cash.",
-        //         before: { lat: "Spikes", cost: "$High", rev: "Flat" },
-        //         after:  { lat: "Stable", cost: "-30%", rev: "Healthy" }
-        //     },
-        //     {
-        //         name: "DISCORD",
-        //         desc: "GC Pauses caused lag for 11M users.",
-        //         before: { lat: "Freeze", cost: "High CPU", rev: "Churn" },
-        //         after:  { lat: "Zero", cost: "Low CPU", rev: "Growth" }
-        //     },
-        //     {
-        //         name: "WALMART",
-        //         desc: "Slow load times hurt conversion.",
-        //         before: { lat: "4.0s", cost: "Wasted", rev: "Low Conv" },
-        //         after:  { lat: "2.0s", cost: "Optimized", rev: "+2% Sales" }
-        //     }
-        // ];
-
-        // Real System Optimization Cases
-const cases = [
-    {
-        name: "PostgreSQL Optimization",
-        desc: "High CPU utilization during concurrent payroll processing.",
-        before: { lat: "2s", cost: "High CPU (85%)", rev: "Throughput limited" },
-        after:  { lat: "200ms", cost: "CPU 40%", rev: "Stable under peak load" }
-    },
-    {
-        name: "Linux + NFS Tuning",
-        desc: "I/O wait spikes during load testing with LoadRunner.",
-        before: { lat: "High IO wait", cost: "Throughput drops", rev: "System unstable" },
-        after:  { lat: "Stable IO", cost: "2.3x throughput", rev: "Peak-ready" }
-    },
-    {
-        name: "Connection Pool Optimization",
-        desc: "Backend API latency under concurrent requests.",
-        before: { lat: "Latency spikes", cost: "Thread blocking", rev: "Slow API" },
-        after:  { lat: "-40% latency", cost: "Efficient resource usage", rev: "Consistent response time" }
-    }
+<script>
+const cases=[
+  {name:"HIGH-TRAFFIC SAAS",    before:{lat:"1,840ms",cost:"Scaling up", rev:"Stagnant"}, after:{lat:"220ms",   cost:"Stable",   rev:"SLA met"  }},
+  {name:"FINTECH PLATFORM",     before:{lat:"Timeouts",cost:"Wasted",    rev:"Churn ↑" }, after:{lat:"Resolved",cost:"−30%",    rev:"Stable"   }},
+  {name:"ENTERPRISE INFRA",     before:{lat:"Spikes",  cost:"$$$",       rev:"Blocked" }, after:{lat:"Flat",    cost:"+30% VMs", rev:"Unlocked" }},
+  {name:"JAVA MICROSERVICES",   before:{lat:"GC Pause",cost:"High CPU",  rev:"Churn"   }, after:{lat:"Zero",    cost:"Low CPU",  rev:"Growth"   }}
 ];
-
-
-        let idx = 0;
-
-        function playSequence() {
-            const data = cases[idx];
-
-            // STEP 1: RESET TO "CRITICAL" STATE (The Problem)
-            container.className = "impact-engine-container state-critical";
-            progressEl.style.width = "5%";
-            progressEl.style.background = "#ff4444";
-            statusEl.textContent = "⚠ DETECTING BOTTLENECK";
-            statusEl.style.color = "#ff4444";
-
-            // Set Text
-            companyEl.textContent = data.name;
-            descEl.textContent = data.desc;
-
-            // Set "Bad" Numbers
-            valLat.textContent = data.before.lat;
-            valCost.textContent = data.before.cost;
-            valRev.textContent = data.before.rev;
-            
-            // Remove colored classes
-            valLat.className = "metric-value"; 
-            valCost.className = "metric-value";
-            valRev.className = "metric-value";
-
-            // STEP 2: ANIMATE TO "OPTIMIZED" (The Solution)
-            setTimeout(() => {
-                container.className = "impact-engine-container state-optimized";
-                progressEl.style.width = "100%";
-                progressEl.style.background = "#2ea043"; // Green
-                statusEl.textContent = "✓ SYSTEM OPTIMIZED";
-                statusEl.style.color = "#2ea043";
-
-                // Update Numbers to "Good"
-                valLat.innerHTML = data.after.lat + " <span style='font-size:1rem'>⬇</span>";
-                valCost.innerHTML = data.after.cost + " <span style='font-size:1rem'>⬇</span>";
-                valRev.innerHTML = data.after.rev + " <span style='font-size:1rem'>⬆</span>";
-
-                // Add Colors
-                valLat.classList.add('good');
-                valCost.classList.add('good');
-                valRev.classList.add('gold');
-
-            }, 2000); // Wait 2 seconds before fixing
-
-            // Loop
-            idx = (idx + 1) % cases.length;
-        }
-
-        // Start Loop
-        playSequence();
-        setInterval(playSequence, 5000); // New case every 5 seconds
-    </script>
-
+let idx=0;
+const co=document.getElementById('wt-co');
+const vL=document.getElementById('mv-lat'),vC=document.getElementById('mv-cost'),vR=document.getElementById('mv-rev');
+const mL=document.getElementById('mc-lat'),mC=document.getElementById('mc-cost'),mR=document.getElementById('mc-rev');
+const fill=document.getElementById('wf-fill'),stat=document.getElementById('wf-status');
+function setCell(el,mEl,val,cls){el.textContent=val;el.className='wm-val '+cls;mEl.className='wm-cell '+(cls==='bad'?'bad-bg':cls==='gold'?'gold-bg':'good-bg')}
+function run(){
+  const d=cases[idx];co.textContent=d.name;
+  setCell(vL,mL,d.before.lat,'bad');setCell(vC,mC,d.before.cost,'bad');setCell(vR,mR,d.before.rev,'bad');
+  fill.style.width='6%';fill.style.background='#cc2200';
+  stat.textContent='⚠ Detecting bottleneck';stat.style.color='#cc2200';
+  setTimeout(()=>{
+    setCell(vL,mL,d.after.lat,'good');setCell(vC,mC,d.after.cost,'good');setCell(vR,mR,d.after.rev,'gold');
+    fill.style.width='100%';fill.style.background='#00875a';
+    stat.textContent='✓ Root cause fixed';stat.style.color='#00875a';
+  },2200);
+  idx=(idx+1)%cases.length;
+}
+run();setInterval(run,5500);
+</script>
 </body>
 </html>
