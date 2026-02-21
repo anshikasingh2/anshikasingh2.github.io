@@ -125,15 +125,14 @@ a{color:inherit;text-decoration:none}
 /* PROBLEM CARDS */
 .prb-grid{display:grid;grid-template-columns:repeat(2,1fr);gap:16px}
 @media(max-width:640px){.prb-grid{grid-template-columns:1fr}}
-.prb-card{background:var(--bg);border:1.5px solid var(--rule);border-radius:10px;padding:28px;transition:border-color .25s,box-shadow .25s,transform .25s;position:relative;overflow:hidden}
+.prb-card{background:var(--bg);border:1.5px solid var(--rule);border-radius:10px;padding:28px;transition:border-color .25s,box-shadow .25s,transform .25s;position:relative;overflow:hidden;display:flex;flex-direction:column}
 .prb-card:hover{border-color:var(--blue);box-shadow:0 8px 28px rgba(0,102,255,.1);transform:translateY(-2px)}
 .prb-card::before{content:'';position:absolute;top:0;left:0;right:0;height:3px;background:var(--blue);transform:scaleX(0);transform-origin:left;transition:transform .35s}
 .prb-card:hover::before{transform:scaleX(1)}
 .prb-icon{font-size:28px;margin-bottom:14px}
 .prb-card h3{font-size:16px;font-weight:700;color:var(--ink);margin-bottom:8px;letter-spacing:-.01em}
 .prb-card p{font-size:14px;color:var(--body);line-height:1.7;margin-bottom:14px}
-.prb-tag{font-family:var(--mono);font-size:10px;letter-spacing:.1em;text-transform:uppercase;color:var(--blue);background:var(--blue-dim);padding:3px 8px;border-radius:4px;display:inline-block}
-
+.prb-tag{font-family:var(--mono);font-size:10px;letter-spacing:.1em;text-transform:uppercase;color:var(--blue);background:var(--blue-dim);padding:3px 8px;border-radius:4px;display:inline-block;margin-top:auto;align-self:flex-start}
 /* BENTO */
 .bento{display:grid;grid-template-columns:repeat(3,1fr);gap:14px}
 @media(max-width:680px){.bento{grid-template-columns:1fr}}
